@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>印尼纵贯线 · 火山海岛科莫多</title>
+<link rel="icon" href="data:,">
+<style>
+*,::before,::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+::selection{background:#c9a86c;color:#0a1a12}
+:focus-visible{outline:2px solid #c9a86c;outline-offset:2px}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2)}
+
+:root{
+  --bg-dark:#0a1a12;
+  --bg-dark-2:#102018;
+  --bg-light:#f7f5f0;
+  --bg-light-2:#efece5;
+  --ink:#f7f5f0;
+  --ink-2:#e8e4db;
+  --ink-dark:#1a1a1a;
+  --ink-muted:#6e6a63;
+  --gold:#c9a86c;
+  --gold-light:#e0cca0;
+  --green:#4a7a5e;
+  --green-light:#6b9e7e;
+  --alert:#d65a5a;
+  --border:rgba(255,255,255,.12);
+  --border-dark:rgba(0,0,0,.1);
+  --serif:Georgia,'Songti SC','STSong',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue',Arial,sans-serif;
+}
+
+body{font-family:var(--sans);background:var(--bg-dark);color:var(--ink);font-size:15px;line-height:1.8;font-weight:400;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+
+.container{width:100%;max-width:1100px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){.container{padding:0 22px}}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:64px;display:flex;justify-content:space-between;align-items:center;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+nav .logo{font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:1.5px;color:#fff}
+nav .links{display:flex;gap:32px}
+nav .links a{font-size:13px;font-weight:400;color:rgba(255,255,255,.72);letter-spacing:1px;transition:color .2s ease}
+nav .links a:hover{color:var(--gold)}
+nav.scrolled{background:rgba(247,245,240,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-dark)}
+nav.scrolled .logo{color:var(--ink-dark)}
+nav.scrolled .links a{color:#555}
+nav.scrolled .links a:hover{color:var(--gold)}
+@media(max-width:768px){nav .links{display:none}}
+
+/* ===== HERO ===== */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden;background:var(--bg-dark)}
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transition:opacity 1.4s ease-in-out;transform:scale(1.06)}
+.hero-slide.active{opacity:1;transform:scale(1)}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(10,26,18,.88) 0%,rgba(10,26,18,.5) 45%,rgba(10,26,18,.28) 100%)}
+.hero-dots{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
+.hero-dots button{width:32px;height:3px;background:rgba(255,255,255,.3);border:none;cursor:pointer;transition:background .3s ease}
+.hero-dots button.active{background:var(--gold)}
+.hero-content{position:relative;z-index:2;width:100%;padding:0 40px;max-width:1100px;margin:0 auto}
+.hero-eyebrow{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:4px;color:var(--gold);margin-bottom:24px;text-transform:uppercase}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,10vw,120px);line-height:1.05;color:#fff;letter-spacing:8px;margin-bottom:28px}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.78);max-width:540px;margin-bottom:36px;line-height:1.9}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap}
+.hero-tags span{padding:9px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.82);background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.18)}
+.hero-tags .tag-gold{background:var(--gold);color:var(--bg-dark);font-weight:700}
+
+/* ===== SECTIONS ===== */
+.section-light{background:var(--bg-light);color:var(--ink-dark);padding:100px 0}
+.section-dark{background:var(--bg-dark);color:var(--ink);padding:100px 0}
+.section-light .eyebrow{color:var(--gold);font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;font-weight:500}
+.section-dark .eyebrow{color:var(--gold);font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;font-weight:500}
+.section-title{font-family:var(--serif);font-size:clamp(36px,5vw,56px);font-weight:400;line-height:1.15;letter-spacing:2px;margin-bottom:16px}
+.section-title.serif{color:var(--ink-muted)}
+.section-dark .section-title{color:#fff}
+.section-dark .section-title .accent{color:var(--green-light)}
+.section-sub{font-size:15px;color:var(--ink-muted);margin-bottom:48px}
+
+/* ===== ROUTE OVERVIEW ===== */
+.route-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.route-tabs .tab{padding:10px 18px;border:1px solid var(--border-dark);background:transparent;font-size:13px;font-weight:500;color:#555;cursor:pointer;transition:all .2s ease}
+.route-tabs .tab:hover{border-color:var(--gold);color:var(--ink-dark)}
+.route-tabs .tab.active{background:var(--bg-dark);color:#fff;border-color:var(--bg-dark)}
+#overview .container{max-width:1220px}
+.route-content{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(300px,.7fr);gap:24px;align-items:start}
+.route-map{background:#cfe4eb;position:relative;height:580px;min-height:0;display:flex;flex-direction:column;align-items:stretch;align-self:start;border-radius:8px;overflow:hidden}
+.route-map-tools{display:flex;align-items:center;justify-content:flex-end;gap:14px;margin-bottom:10px;padding:0 2px}
+.map-mode-switch{display:flex;gap:0;border:1px solid #d7dadd;background:#fff}
+.map-mode-switch button{appearance:none;border:0;border-right:1px solid #d7dadd;background:#fff;color:#687178;font:500 12px var(--sans);padding:8px 12px;cursor:pointer}
+.map-mode-switch button:last-child{border-right:0}
+.map-mode-switch button.active{background:#1f73d2;color:#fff}
+.map-mode-note{font:11px var(--sans);color:#899399;white-space:nowrap}
+.route-map-stage{position:relative;height:540px;min-height:0;flex:none;background:#cfe4eb;overflow:hidden}
+.route-map svg{width:100%;height:540px;display:block;cursor:default;user-select:none;background:#cfe4eb}
+#actualMap{display:none;width:100%;height:492px;background:#eaf0f3;position:relative}
+#actualMap.active:not([hidden]){display:block}
+#routeSvg.map-hidden{display:none}
+.actual-map-status{position:absolute;inset:0;background:#f7fafb;display:flex;flex-direction:column;justify-content:center;padding:28px;color:#53616a;font:13px/1.9 var(--sans);z-index:2}
+.actual-map-status[hidden]{display:none!important}
+.actual-map-status strong{display:block;color:#1a1a1a;margin-bottom:8px;font-size:16px}
+.actual-map-status code{display:block;margin:10px 0 0;padding:10px 12px;background:#eef2f4;border-left:3px solid #1f73d2;color:#33434d;font:11px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:normal}
+.actual-map-status .status-note{color:#89939a;font-size:12px;margin-top:8px}
+#actualMap .tencent-logo,#actualMap .logo,#actualMap .map-ctrl{display:none}
+.route-summary{min-height:536px;display:flex;flex-direction:column}
+.route-summary h3{font-family:var(--serif);font-size:24px;font-weight:600;margin-bottom:16px;color:var(--ink-dark)}
+.route-summary p{font-size:14px;color:var(--ink-muted);line-height:1.9;margin-bottom:24px;max-width:38ch}
+.route-summary .hotel-map-note{font-size:12px;color:#80652b;background:rgba(201,168,108,.12);padding:9px 12px;margin-bottom:18px;max-width:none}
+.route-days{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start}
+.route-days div{font-size:13px;color:#555;padding:13px 14px;background:#fff;border:1px solid var(--border-dark);min-height:66px}
+.route-days strong{display:block;font-size:14px;color:var(--ink-dark);margin-bottom:6px}
+@media(max-width:900px){.route-content{grid-template-columns:1fr}.route-map,.route-summary{min-height:0}.route-map{height:auto}.route-map-stage,#actualMap{min-height:400px;height:400px}.route-map svg{height:400px}.map-mode-note{display:none}}
+
+/* ===== ITINERARY ===== */
+.notice-card{background:rgba(255,255,255,.05);border:1px solid var(--border);padding:22px 26px;margin-bottom:60px}
+.notice-title{display:flex;align-items:center;gap:10px;font-size:15px;color:#fff;margin-bottom:8px;font-weight:700}
+.notice-card p{font-size:14px;color:rgba(255,255,255,.72);line-height:1.8}
+.notice-card p strong{color:var(--alert);font-weight:700}
+
+.day-item{margin-bottom:70px;padding-bottom:70px;border-bottom:1px solid var(--border)}
+.day-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.day-header{display:flex;align-items:baseline;gap:18px;margin-bottom:28px;flex-wrap:wrap}
+.day-number{font-family:var(--serif);font-size:clamp(56px,8vw,90px);font-weight:400;color:var(--gold);line-height:1;opacity:.9}
+.day-meta{font-size:13px;color:rgba(255,255,255,.55);letter-spacing:1px}
+.day-header h3{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:600;color:#fff;letter-spacing:1px;flex:1;min-width:260px}
+
+.day-photos{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:28px}
+.day-photos img{width:100%;height:260px;object-fit:cover}
+.day-photos.three{grid-template-columns:repeat(3,1fr)}
+.day-photos.three img{height:200px}
+@media(max-width:768px){.day-photos,.day-photos.three{grid-template-columns:1fr}.day-photos img,.day-photos.three img{height:220px}}
+
+.timeline{list-style:none}
+.timeline li{position:relative;padding-left:20px;margin-bottom:17px;font-size:15px;color:rgba(255,255,255,.72);line-height:1.75}
+.timeline li::before{content:'';position:absolute;left:1px;top:10px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.timeline li::after{display:none}
+.timeline li strong{color:var(--gold-light);font-weight:600}
+.timeline li .search-name{font-size:.78em;color:rgba(255,255,255,.48);font-weight:400;letter-spacing:.1px;white-space:nowrap}
+.timeline li .key-place{color:#fff;font-weight:600}
+@media(max-width:768px){.timeline li{font-size:14px;margin-bottom:15px}.timeline li .search-name{font-size:.76em;white-space:normal}}
+.day-note{font-size:13px;color:rgba(255,255,255,.55);margin-top:20px;padding:16px;background:rgba(255,255,255,.04);border-left:3px solid var(--gold)}
+
+/* ===== INFO CARDS ===== */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.info-card{background:#fff;padding:26px;border:1px solid var(--border-dark);transition:transform .2s ease,box-shadow .2s ease}
+.info-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.08)}
+.info-card h4{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink-dark);margin-bottom:8px}
+.info-card .meta{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.info-card p{position:relative;padding-left:16px;font-size:14px;color:var(--ink-muted);line-height:1.8}
+.info-card p::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.info-card .tag{font-size:12px;color:#777;background:var(--bg-light-2);padding:4px 10px;display:inline-block;margin-top:12px}
+
+.dark-card{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:26px}
+.dark-card h4{font-family:var(--serif);font-size:18px;font-weight:600;color:#fff;margin-bottom:14px}
+.dark-card p{position:relative;padding-left:16px;font-size:14px;color:rgba(255,255,255,.7);line-height:1.8}
+.dark-card p::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.hotel-card{padding:0;overflow:hidden}
+.hotel-card .hotel-media{height:188px;overflow:hidden;background:#17241d}
+.hotel-gallery{display:grid;grid-template-columns:1.65fr 1fr;grid-template-rows:1fr 1fr;gap:6px;height:100%;background:#17241d}
+.hotel-gallery img{width:100%;height:100%;display:block;object-fit:cover;opacity:.92;transition:transform .35s ease,opacity .35s ease}
+.hotel-gallery .hotel-main{grid-row:1/3}
+.hotel-card:hover .hotel-media img{transform:scale(1.04);opacity:1}
+.hotel-card .hotel-body{padding:22px 26px 24px}
+.hotel-card .hotel-body h4{margin-bottom:10px}
+.hotel-card .hotel-caption{display:block;margin-top:14px;font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.4px}
+
+/* ===== DINING (reuse info-card) ===== */
+.dining-intro{max-width:68ch;margin:0 0 26px;color:var(--ink-muted);font-size:15px;line-height:1.8}
+.dining-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px 22px}
+.dining-group{grid-column:1/-1;margin:16px 0 2px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.dining-grid .info-card{padding:0;overflow:hidden}
+.dining-grid .info-card .dining-media{height:184px;overflow:hidden;background:var(--bg-light-2)}
+.dining-grid .info-card .dining-media img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s ease}
+.dining-grid .info-card:hover .dining-media img{transform:scale(1.06)}
+.dining-grid .info-card .dining-body{padding:18px 20px 20px}
+.dining-grid .info-card .dining-body h4{margin:0 0 10px;font-size:19px}
+.dining-grid .info-card .tag{display:inline-block;color:var(--gold);background:rgba(198,164,100,.1);font-weight:500;font-size:13px;letter-spacing:.02em}
+@media(max-width:580px){.dining-grid{grid-template-columns:1fr}.dining-grid .info-card .dining-media{height:200px}}
+
+/* ===== FLIGHTS ===== */
+.flight-list{display:grid;gap:16px}
+.flight-item{position:relative;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:22px 26px 22px 52px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center}
+.flight-item::before{content:'';position:absolute;left:20px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.flight-route{font-family:var(--serif);font-size:18px;font-weight:600;color:#fff;white-space:nowrap}
+.flight-route span{color:var(--gold)}
+.flight-detail{font-size:13px;color:rgba(255,255,255,.65);line-height:1.7}
+.flight-detail strong{color:#fff;font-weight:500}
+.flight-price{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--gold);white-space:nowrap}
+@media(max-width:768px){.flight-item{grid-template-columns:1fr;gap:10px}}
+
+/* ===== BUDGET ===== */
+.budget-wrap{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:start}
+.budget-table{width:100%;border-collapse:collapse;font-size:14px}
+.budget-table th{text-align:left;padding:14px 12px;font-weight:600;color:var(--ink-dark);border-bottom:2px solid var(--ink-dark);font-size:13px;letter-spacing:1px}
+.budget-table td{padding:14px 12px;border-bottom:1px solid var(--border-dark);color:#555;vertical-align:top}
+.budget-table td:first-child{font-weight:500;color:var(--ink-dark)}
+.budget-table .sub td{color:var(--ink-muted);font-size:13px;padding-left:24px}
+.budget-total{background:var(--bg-dark);color:#fff;padding:30px;text-align:center}
+.budget-total .label{font-size:12px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.budget-total .amount{font-family:var(--serif);font-size:48px;font-weight:600;margin-bottom:10px}
+.budget-total .desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.7}
+@media(max-width:900px){.budget-wrap{grid-template-columns:1fr}}
+
+/* ===== CHECKLIST ===== */
+.checklist-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+.checklist h4{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink-dark);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border-dark)}
+.checklist label{position:relative;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#555;margin-bottom:12px;cursor:pointer;padding-left:14px}
+.checklist label::before{content:'';position:absolute;left:0;top:6px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.checklist input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold);margin-top:3px;flex-shrink:0}
+.checklist label.done{color:#999;text-decoration:line-through}
+@media(max-width:768px){.checklist-wrap{grid-template-columns:1fr}}
+
+/* ===== CHILL SECTION ===== */
+.chill-card{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:30px}
+.chill-card h4{font-family:var(--serif);font-size:22px;color:#fff;margin-bottom:12px}
+.chill-card p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.8}
+
+/* ===== ROUTE MAP ===== */
+#routeSvg .map-bg{fill:#cfe4eb}
+#routeSvg .land{fill:#eff0e8;stroke:#9daf9f;stroke-width:1.05;stroke-linejoin:round}
+#routeSvg .land-dim{fill:#e7ebe2;stroke:#aebbaa;stroke-width:.8}
+#routeSvg .grid{stroke:transparent}
+#routeSvg .road-major{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.62}
+#routeSvg .road-minor{fill:none;stroke:#fff;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;opacity:.4}
+#routeSvg .coast-label{font-family:var(--sans);font-size:12px;letter-spacing:2px;fill:#607870;font-weight:800;paint-order:stroke;stroke:#cfe4eb;stroke-width:3px;stroke-linejoin:round}
+#routeSvg .water-label{font-family:var(--sans);font-size:10px;letter-spacing:1.4px;fill:#5c8490;font-weight:600;paint-order:stroke;stroke:#cfe4eb;stroke-width:3px;stroke-linejoin:round}
+#routeSvg .route-casing{fill:none;stroke:none;stroke-width:0}
+#routeSvg .path{fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;animation:route-flow 5.5s linear infinite}
+#routeSvg .path.fly{stroke-dasharray:10 8}
+#routeSvg .path.car{stroke-dasharray:3 7}
+#routeSvg .path.ferry{stroke-dasharray:8 7}
+#routeSvg .path.boat{stroke-dasharray:4 8}
+#routeSvg .point{fill:#2f6fae;stroke:#fff;stroke-width:1.5}
+#routeSvg .point.major{r:4.2}
+#routeSvg .point.featured{fill:#c9a86c;stroke:#fff;stroke-width:1.5}
+#routeSvg .stop-badge{fill:#2f6fae;stroke:#fff;stroke-width:1.5}
+#routeSvg .stop-badge.end{fill:#bf5a4c}
+#routeSvg .stop-dot{fill:#2f6fae;stroke:#fff;stroke-width:1.5}
+#routeSvg .stop-dot.featured{fill:#c9a86c}
+#routeSvg .hotel-marker{fill:#c9a86c;stroke:#fff;stroke-width:1.5}
+#routeSvg .hotel-label{font-family:var(--sans);font-size:9px;fill:#80652b;font-weight:600;paint-order:stroke;stroke:#cfe4eb;stroke-width:1.4px;stroke-linejoin:round}
+#routeSvg .stop-index{font-family:var(--sans);font-size:8px;font-weight:600;fill:#fff;pointer-events:none}
+#routeSvg .label{font-family:var(--sans);font-size:10px;fill:#34464b;font-weight:500;paint-order:stroke;stroke:#cfe4eb;stroke-width:1.4px;stroke-linejoin:round}
+#routeSvg .label.major{font-size:10.5px;font-weight:600;fill:#25353a}
+#routeSvg .label.featured{font-weight:600;fill:#80652b}
+#routeSvg .label.active{font-weight:600;fill:#2f6fae}
+#routeSvg .mode-tag{font-family:var(--sans);font-weight:600;letter-spacing:.2px;paint-order:stroke;stroke:#cfe4eb;stroke-width:1.4px;stroke-linejoin:round}
+#routeSvg .map-title{font-family:var(--serif);font-size:14px;fill:#15252b;font-weight:600;paint-order:stroke;stroke:#cfe4eb;stroke-width:3px;stroke-linejoin:round}
+#routeSvg .title-rule{stroke:#c9a86c;stroke-width:2;stroke-linecap:round}
+#routeSvg .map-sub{font-size:10px;fill:#4d6068;font-weight:600;paint-order:stroke;stroke:#cfe4eb;stroke-width:4px;stroke-linejoin:round}
+#routeSvg .scale{stroke:#667078;stroke-width:1.2}
+#routeSvg .scale-label{font-family:var(--sans);font-size:10px;fill:#667078}
+@keyframes route-flow{to{stroke-dashoffset:-44}}
+@media(prefers-reduced-motion:reduce){#routeSvg .path{animation:none}}
+
+footer{padding:40px 0;text-align:center;font-size:12px;color:rgba(255,255,255,.4);background:var(--bg-dark);border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="logo">INDONESIA</div>
+  <div class="links">
+    <a href="#overview">路线</a>
+    <a href="#itinerary">日志</a>
+    <a href="#vehicles">用车</a>
+    <a href="#hotels">酒店</a>
+    <a href="#dining">餐厅</a>
+    <a href="#flight">航班</a>
+    <a href="#budget">预算</a>
+    <a href="#tips">贴士</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active" data-bg="images/hero-padar.jpg" data-idx="0"></div>
+    <div class="hero-slide" data-bg="images/bromo-sunrise.jpg" data-idx="1"></div>
+    <div class="hero-slide" data-bg="images/ijen-lake.jpg" data-idx="2"></div>
+    <div class="hero-slide" data-bg="images/kelingking.jpg" data-idx="3"></div>
+    <div class="hero-slide" data-bg="images/komodo-sunset.jpg" data-idx="4"></div>
+  </div>
+  <div class="hero-dots" aria-label="Hero 图片切换">
+    <button class="active" data-idx="0" aria-label="第 1 张"></button>
+    <button data-idx="1" aria-label="第 2 张"></button>
+    <button data-idx="2" aria-label="第 3 张"></button>
+    <button data-idx="3" aria-label="第 4 张"></button>
+    <button data-idx="4" aria-label="第 5 张"></button>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">INDONESIA · 10 DAYS</div>
+    <h1>火山<br>海岛<br>科莫多</h1>
+    <p class="hero-sub">泗水 Bromo / Ijen · 巴厘岛蓝梦岛潜水 / 佩妮达 / 乌鲁瓦图 · 科莫多国家公园 · 深圳返程</p>
+    <div class="hero-tags">
+      <span class="tag-gold">9.26 — 10.5</span>
+      <span>深圳出发</span>
+      <span>10 天 9 晚</span>
+    </div>
+  </div>
+</section>
+
+<section id="overview" class="section-light">
+  <div class="container">
+    <div class="eyebrow">ROUTE OVERVIEW</div>
+    <h2 class="section-title serif">路线骨架</h2>
+    <p class="section-sub">9/26 出发 → 10/5 返程 · 横跨爪哇、巴厘、小巽他群岛</p>
+
+    <div class="route-tabs">
+      <button class="tab active" data-day="all">全程</button>
+      <button class="tab" data-day="d1">D1 · 深圳→泗水</button>
+      <button class="tab" data-day="d2">D2 · Bromo→Ijen</button>
+      <button class="tab" data-day="d3">D3 · Ijen→罗威纳</button>
+      <button class="tab" data-day="d4">D4 · 海豚→乌布</button>
+      <button class="tab" data-day="d5">D5 · 蓝梦岛潜+浮+环岛</button>
+      <button class="tab" data-day="d6">D6 · 佩妮达西线</button>
+      <button class="tab" data-day="d7">D7 · 自由活动</button>
+      <button class="tab" data-day="d8">D8 · 巴厘→科莫多</button>
+      <button class="tab" data-day="d9">D9 · 科莫多6景点</button>
+      <button class="tab" data-day="d10">D10 · 返程</button>
+    </div>
+
+    <div class="route-content">
+      <div class="route-map">
+        <div class="route-map-tools">
+          <div class="map-mode-note">“住”标记酒店位置 · 箭头表示行进方向</div>
+        </div>
+        <div class="route-map-stage">
+          <svg id="routeSvg" viewBox="0 0 900 540" preserveAspectRatio="xMidYMid meet" role="img" aria-label="印尼 10 天真实比例路线图">
+            <!-- generated by JS -->
+          </svg>
+          <div id="actualMap" aria-label="腾讯地图实际地图版本" hidden></div>
+          <div class="actual-map-status" id="actualMapStatus" hidden>
+            <strong>实际地图版本</strong>
+            正在加载腾讯地图；海外地图需要配置腾讯位置服务 Key。未配置时仍可使用左侧真实比例路线图。
+          </div>
+        </div>
+      </div>
+      <div class="route-summary" id="routeSummary">
+        <h3>全程路线</h3>
+        <p>深圳 → 泗水 → Bromo → Ijen → 轮渡至巴厘 → 罗威纳 → 乌布 → 蓝梦岛 → 佩妮达夜宿 → 巴厘岛南部（自由日）→ 科莫多 → 回国。</p>
+        <p class="hotel-map-note">金色点表示每晚酒店位置：D5 入住佩妮达 Alana Penida Hotel，D6-D7 入住乌加桑 Savaya 附近别墅，D8-D9 入住下拉布安 Bintang Flores Hotel。</p>
+        <div class="route-days">
+          <div><strong>9/26</strong> 深圳→雅加达→泗水（不住酒店）</div>
+          <div><strong>9/27</strong> Bromo 日出→Bobocabin Ijen</div>
+          <div><strong>9/28</strong> Ijen 蓝火→Padmasari Lovina</div>
+          <div><strong>9/29</strong> 追海豚→Alas梯田俱乐部→乌布别墅</div>
+          <div><strong>9/30</strong> 蓝梦岛 DSD+浮潜+环岛→Alana Penida</div>
+          <div><strong>10/1</strong> 佩妮达西线→乌加桑别墅</div>
+          <div><strong>10/2</strong> 自由活动（滑翔伞自理）</div>
+          <div><strong>10/3</strong> 巴厘→Bintang Flores→日落团</div>
+          <div><strong>10/4</strong> 科莫多 6 景点</div>
+          <div><strong>10/5</strong> 科莫多→雅加达→深圳</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="itinerary" class="section-dark">
+  <div class="container">
+    <div class="eyebrow">DAILY JOURNAL</div>
+    <h2 class="section-title">每日<span class="accent">详记</span></h2>
+
+    <div class="day-item" id="day1">
+      <div class="day-header">
+        <div class="day-number">01</div>
+        <div class="day-meta">9/26 Fri</div>
+        <h3>深圳 → 雅加达 → 泗水 → Bromo 山脚</h3>
+      </div>
+      <ul class="timeline">
+        <li><strong>集合出发</strong> · 深圳宝安机场 T3 <span class="search-name">Shenzhen Bao'an International Airport · SZX</span>，建议提前 3h 抵达</li>
+        <li><strong>14:10–18:20 春秋航空 9C7341</strong> · 深圳 SZX → 雅加达 CGK <span class="search-name">Soekarno–Hatta International Airport</span></li>
+        <li>雅加达转机，可在机场简餐 / 整理行李</li>
+        <li><strong>21:00–22:40 连城航空 QG728</strong> · 雅加达 CGK → 泗水 SUB <span class="search-name">Juanda International Airport</span></li>
+        <li><strong>22:40 抵达泗水</strong> · 朱安达国际机场 SUB，专车接机，直接前往 Bromo 山脚（约 3h）</li>
+        <li><strong>次日 02:30 抵达 Bromo 山脚</strong> <span class="search-name">Mount Bromo / Cemoro Lawang</span> · 不入住酒店，短暂休整后直接上山</li>
+      </ul>
+      <div class="day-note">建议将厚外套、充电宝、洗漱用品放在随身背包；D1 不安排酒店，减少泗水市区绕路和入住等待。</div>
+    </div>
+
+    <div class="day-item" id="day2">
+      <div class="day-header">
+        <div class="day-number">02</div>
+        <div class="day-meta">9/27 Sat</div>
+        <h3>Bromo 日出 · 沙海 · 火山口 → Ijen</h3>
+      </div>
+      <div class="day-photos">
+        <img loading="lazy" decoding="async" src="images/bromo-sunrise.jpg" alt="Bromo 日出">
+        <img loading="lazy" decoding="async" src="images/bromo-sand.jpg" alt="Bromo 沙海">
+      </div>
+      <ul class="timeline">
+        <li><strong>03:00 出发</strong> · 乘吉普车前往 King Kong 观景台 <span class="search-name">King Kong Hill Viewpoint</span>（约 40min）</li>
+        <li><strong>04:30 日出</strong> · 拍摄 Bromo、Batok、Semeru 同框</li>
+        <li>日出后吉普车穿越<strong>沙海</strong>，抵达火山口脚下</li>
+        <li><strong>骑马或徒步</strong>登火山口阶梯，硫磺味浓烈建议戴口罩</li>
+        <li><strong>08:30 返回山脚集合点</strong> · 在 <strong>Cemoro Lawang 主街火山观景咖啡区</strong> <span class="search-name">Cemoro Lawang</span> 早餐、简单擦洗，姜茶配三明治补充体力（前一夜未住酒店，用随身洗漱包在休息区处理）</li>
+        <li><strong>10:00 出发前往 Ijen</strong> <span class="search-name">Ijen Crater / Kawah Ijen</span> · 车程约 4–5h，途经 Banyuwangi 用午餐</li>
+        <li><strong>13:00 途中午餐 · 外南梦简餐区</strong> <span class="search-name">Ketapang Harbour · Banyuwangi Roadside Warungs</span> · 东爪哇家常黄姜饭 + 炒饭 + 沙爹，7 人围坐歇脚补给（人均约 ¥40）</li>
+        <li><strong>18:30 入住 Bobocabin Ijen</strong> <span class="search-name">Bobocabin Ijen Banyuwangi</span> · 放行李后于山脚 Warung 晚餐，烤鱼 + 时蔬 + 黄姜饭，海拔低、气温舒适</li>
+      </ul>
+      <div class="day-note">Bromo 凌晨气温约 5–10°C，务必穿厚外套；火山口阶梯陡峭，穿防滑鞋。</div>
+    </div>
+
+    <div class="day-item" id="day3">
+      <div class="day-header">
+        <div class="day-number">03</div>
+        <div class="day-meta">9/28 Sun</div>
+        <h3>Ijen 蓝火 · 硫酸湖 → 轮渡 → 罗威纳</h3>
+      </div>
+      <div class="day-photos">
+        <img loading="lazy" decoding="async" src="images/ijen-crater.jpg" alt="Ijen 蓝火">
+        <img loading="lazy" decoding="async" src="images/ijen-lake.jpg" alt="Ijen 硫酸湖">
+      </div>
+      <ul class="timeline">
+        <li><strong>01:00 起床</strong> · 02:00 Ijen Crater 登山（约 2h 到火山口）</li>
+        <li><strong>蓝火</strong> · 下到火山口底部看蓝色火焰，需戴防毒面具</li>
+        <li><strong>硫酸湖</strong> · 日出后湖面呈翡翠色，矿工搬运硫磺出片</li>
+        <li><strong>07:00 返回 Bobocabin</strong> · 早餐、补觉、退房</li>
+        <li><strong>10:00 前往外南梦码头</strong> <span class="search-name">Ketapang Ferry Port</span> · 车程约 1h</li>
+        <li><strong>轮渡</strong> · Ketapang（外南梦）→ Gilimanuk（吉利马努克）（约 1h），人车同船</li>
+        <li><strong>11:30 午餐 · 吉利马努克镇中心美食街</strong> <span class="search-name">Jl. Raya Gilimanuk</span> · 渡轮码头靠岸后 5 分钟可达；推荐尝试香料烤鸡、黄姜饭与参巴酱，7 人可点整鸡分享（人均约 ¥45）</li>
+        <li>上岸后乘车沿北巴厘海岸线前往<strong>罗威纳</strong> <span class="search-name">Lovina Beach</span>（约 2h）</li>
+        <li><strong>16:00 入住 Padmasari Resort Lovina</strong></li>
+        <li><strong>晚餐 · 罗威纳海滨公路餐饮带</strong> <span class="search-name">Jl. Raya Lovina · Pemaron</span> · 位于回酒店主路；适合点烤乳猪、烤鱼和海鲜拼盘，临街店铺选择多，7 人可分摊海鲜大份（人均约 ¥70）</li>
+      </ul>
+      <div class="day-note">Ijen 徒步强度大，下坡伤膝，建议带登山杖；蓝火区域硫磺烟呛，不要久留。</div>
+    </div>
+
+    <div class="day-item" id="day4">
+      <div class="day-header">
+        <div class="day-number">04</div>
+        <div class="day-meta">9/29 Mon</div>
+        <h3>罗威纳追海豚 · 古树 · 咖啡庄园 · Alas 梯田俱乐部 · 乌布皇宫 · 乌布市场</h3>
+      </div>
+      <div class="day-photos three">
+        <img loading="lazy" decoding="async" src="images/lovina-dolphins.jpg" alt="罗威纳海豚">
+        <img loading="lazy" decoding="async" src="images/alas-swing.jpg" alt="Alas Harum 梯田秋千">
+        <img loading="lazy" decoding="async" src="images/ubud-market.jpg" alt="乌布市场">
+      </div>
+      <ul class="timeline">
+        <li><strong>05:30 出海</strong> <span class="search-name">Lovina Beach Dolphin Watching</span> · 乘蜘蛛船追海豚，海上约 2h</li>
+        <li><strong>08:00 返回酒店早餐</strong> · 退房后前往乌布方向</li>
+        <li><strong>途中 · 千年古树</strong> <span class="search-name">The Giant Banyan Tree, Tegalalang</span> · 路过停车拍张照，绿荫如盖的参天古榕（约 20min）</li>
+        <li><strong>咖啡庄园</strong> <span class="search-name">Bali Coffee Plantation / 猫屎咖啡 Luwak Coffee</span> · 参观巴厘咖啡种植园，了解猫屎咖啡制作，品尝现磨咖啡与各式花草茶（约 40min）</li>
+        <li><strong>11:00 阿拉斯哈鲁姆梯田俱乐部</strong> <span class="search-name">Alas Harum</span> · 丛林秋千、无边泳池；午餐安排在 Tegalalang 梯田谷景观餐饮带（约 2.5h）</li>
+        <li><strong>14:30 乌布皇宫 / 乌布市场</strong> <span class="search-name">Ubud Palace / Ubud Art Market</span> · 巴厘传统建筑与手工艺品（约 1.5h）</li>
+        <li><strong>16:30 入住乌布 Airbnb 别墅</strong> <span class="search-name">AJV Luxury Villa, Ubud</span> · 距乌布市中心步行 5 分钟，4 卧室豪华别墅</li>
+        <li><strong>晚餐 · 乌布市中心稻田景观餐厅区</strong> <span class="search-name">Jl. Raya Ubud</span> · 距别墅约 10min；以脆皮鸭、烤猪饭与印尼菜为主，适合 7 人提前订位（人均约 ¥90）</li>
+      </ul>
+      <div class="day-note">追海豚时海面风大，建议带薄外套；途中千年古树与咖啡庄园为乌布方向顺路停留点，古树仅做短暂停留拍照，咖啡庄园可免费品尝猫屎咖啡样品；Alas Harum 梯田俱乐部含秋千、鸟巢、泳池等网红打卡点；乌布 Airbnb 为整租别墅，4 卧室适合 7 人团入住。</div>
+    </div>
+
+    <div class="day-item" id="day5">
+      <div class="day-header">
+        <div class="day-number">05</div>
+        <div class="day-meta">9/30 Tue</div>
+        <h3>蓝梦岛 DSD 潜水 + 浮潜 + 环岛 · 夜宿佩妮达</h3>
+      </div>
+      <div class="day-photos three">
+        <img loading="lazy" decoding="async" src="images/lembongan-dive.jpg" alt="蓝梦岛潜水">
+        <img loading="lazy" decoding="async" src="images/lembongan-snorkel.jpg" alt="蓝梦岛浮潜珊瑚区">
+        <img loading="lazy" decoding="async" src="images/lembongan-tour.jpg" alt="蓝梦岛Dream Beach梦幻海滩">
+      </div>
+      <ul class="timeline">
+        <li><strong>08:00 从乌布 Airbnb 别墅出发</strong> <span class="search-name">AJV Luxury Villa, Ubud</span> · 前往 Sanur 码头 <span class="search-name">Sanur Harbour</span>（乌布出发约 1h10m）</li>
+        <li><strong>09:30 快船前往蓝梦岛</strong> <span class="search-name">Nusa Lembongan</span> · 约 30min</li>
+        <li><strong>10:30 中文教练泳池教学</strong> · 学习装备使用与水下技巧</li>
+        <li><strong>12:00 岛上简餐</strong> · 含午餐</li>
+        <li><strong>13:00 第一潜 · Manta Point</strong> <span class="search-name">Manta Point / Nusa Penida</span> · 看魔鬼鱼，约 45min</li>
+        <li><strong>14:30 浮潜 · 蓝梦岛珊瑚区</strong> <span class="search-name">Snorkeling at Coral Garden / Mushroom Bay</span> · 热带鱼群与珊瑚礁，约 40min</li>
+        <li><strong>15:30 第二潜 · Crystal Bay</strong> <span class="search-name">Crystal Bay, Nusa Penida</span> · 珊瑚花园，约 45min</li>
+        <li><strong>16:30 蓝梦岛环岛游</strong> <span class="search-name">Devil's Tear / Dream Beach / Mangrove Forest</span> · 恶魔的眼泪、梦幻沙滩、红树林，约 1h</li>
+        <li><strong>17:30 蓝梦岛 → 佩妮达</strong> · 岛间快艇衔接，约 30min</li>
+        <li><strong>18:00 入住 Alana Penida Hotel</strong> <span class="search-name">Jl. Batumulapan, Batununggul, Nusa Penida</span> · 东海岸海景房，办理入住后晚餐</li>
+        <li><strong>晚餐 · 佩妮达东海岸本地餐饮带</strong> <span class="search-name">Batununggul Beach Road</span> · 距酒店步行可达；以现烤鱼、炒饭、炒面与鲜椰青为主，适合潜水后轻松用餐（人均约 ¥60）</li>
+      </ul>
+      <div class="day-note">DSD 无需潜水证，中文教练 1v2 带潜；蓝梦岛水流较强，务必紧跟教练；浮潜和环岛为拼车拼船一日游套餐内容；恶魔的眼泪拍照注意安全，浪大时远离悬崖边缘；潜水后 24h 内不能坐飞机。</div>
+    </div>
+
+    <div class="day-item" id="day6">
+      <div class="day-header">
+        <div class="day-number">06</div>
+        <div class="day-meta">10/1 Wed</div>
+        <h3>佩妮达西线 · 返回努沙杜瓦</h3>
+      </div>
+      <div class="day-photos three">
+        <img loading="lazy" decoding="async" src="images/kelingking.jpg" alt="精灵坠崖">
+        <img loading="lazy" decoding="async" src="images/broken-beach.jpg" alt="天仙裂痕">
+        <img loading="lazy" decoding="async" src="images/angels-billabong.jpg" alt="天神浴池">
+      </div>
+      <ul class="timeline">
+        <li><strong>07:30 Alana Penida Hotel 早餐</strong> · 司机到店接，直接开始佩妮达西线</li>
+        <li><strong>09:00 精灵坠崖</strong> <span class="search-name">Kelingking Beach</span> · T-Rex 悬崖，可徒步下沙滩（约 1h）</li>
+        <li><strong>11:30 天仙裂痕</strong> <span class="search-name">Pasih Uug / Broken Beach</span> · 天然拱桥下碧绿 lagoon</li>
+        <li><strong>12:30 午餐</strong> <span class="search-name">佩妮达西线路边 Warung · Crystal Bay 附近简餐点</span> · 岛上简餐（炒饭/炒面+软饮）</li>
+        <li><strong>13:30 天神浴池</strong> <span class="search-name">Angel's Billabong</span> · 天然无边泳池，注意潮汐</li>
+        <li><strong>15:30 前往佩妮达码头</strong> <span class="search-name">Nusa Penida Harbour</span> · 快船返回 Sanur</li>
+        <li><strong>17:30 入住乌加桑 Airbnb 别墅</strong> <span class="search-name">Stylish 4BR Villa near Savaya, Ungasan</span> · 靠近 Savaya Beach Club，4 卧室时尚别墅，私人泳池</li>
+        <li><strong>晚餐 · 乌鲁瓦图悬崖高端餐饮带</strong> <span class="search-name">Jl. Pantai Pandawa</span> · 距别墅约 15min；优先订日落位，可选择西班牙菜、海鲜饭或海景印尼菜（人均约 ¥150）</li>
+      </ul>
+      <div class="day-note">佩妮达路况颠簸，建议穿运动鞋；精灵坠崖下沙滩需 40min 陡峭徒步，量力而行；今晚入住巴厘岛南部 Ungasan 地区的 Airbnb 整租别墅。</div>
+    </div>
+
+    <div class="day-item" id="day7">
+      <div class="day-header">
+        <div class="day-number">07</div>
+        <div class="day-meta">10/2 Thu</div>
+        <h3>自由活动日 · Kono Villas（Ungasan）</h3>
+      </div>
+      <div class="day-photos">
+        <img loading="lazy" decoding="async" src="images/uluwatu.jpg" alt="乌鲁瓦图情人崖">
+        <img loading="lazy" decoding="async" src="images/melasti.jpg" alt="Melasti 沙滩">
+      </div>
+      <ul class="timeline">
+        <li><strong>自然醒 · 慢早餐</strong> · 别墅内自由安排，无需早起</li>
+        <li><strong>推荐：乌鲁瓦图情人崖</strong> <span class="search-name">Uluwatu Temple / Pura Luhur Uluwatu</span> · 悬崖寺庙 + 猴子 + 壮观日落（门票自理，约 ¥50/人）</li>
+        <li><strong>推荐：滑翔伞</strong> <span class="search-name">Tandem Paragliding, South Bali</span> · <strong>自理项目，¥300/人</strong>，约 15min 飞行体验，需提前预约</li>
+        <li><strong>推荐：Melasti 沙滩</strong> <span class="search-name">Melasti Beach, Ungasan</span> · 白沙碧海，日落时分最美</li>
+        <li><strong>下午茶 / 日落酒 · Pandawa 悬崖海滩俱乐部带</strong> <span class="search-name">Pandawa Cliff</span> · 距别墅近，按当天日落时间选择海景位（消费自理）</li>
+        <li><strong>午餐 · 乌鲁瓦图寺庙路冲浪酒吧街</strong> <span class="search-name">Jl. Uluwatu</span> · 轻食、早午餐与鸡尾酒选择集中，可看浪点（人均约 ¥100，消费自理）</li>
+        <li><strong>入住 Kono Villas &amp; Resort</strong> <span class="search-name">Jl. Goa Gong, Ungasan</span> · 晚上可前往 Pandawa 悬崖海景餐饮带用餐，或由别墅私人厨师安排 BBQ（消费自理）</li>
+      </ul>
+      <div class="day-note">D7 地接不负责，全天自理。滑翔伞 ¥300/人需自行预约；推荐景点均可打车前往（Grab 很方便）；也可以在别墅泳池躺平一整天。注意次日 D8 需早起送机。</div>
+    </div>
+
+    <div class="day-item" id="day8">
+      <div class="day-header">
+        <div class="day-number">08</div>
+        <div class="day-meta">10/3 Fri</div>
+        <h3>巴厘岛 → 科莫多 · 包快艇日落团</h3>
+      </div>
+      <div class="day-photos">
+        <img loading="lazy" decoding="async" src="images/lbj-harbor.jpg" alt="下拉布安港口">
+        <img loading="lazy" decoding="async" src="images/komodo-sunset.jpg" alt="科莫多日落蝙蝠">
+      </div>
+      <ul class="timeline">
+        <li><strong>07:00 退房</strong> · Kono 别墅简餐后出发，车程约 30min</li>
+        <li><strong>07:00 送机</strong> <span class="search-name">Kono Villas &amp; Resort → Ngurah Rai International Airport · DPS</span></li>
+        <li><strong>09:00–10:10 印尼狮航 QZ642</strong> · 巴厘岛 DPS → 下拉布安 LBJ <span class="search-name">Komodo International Airport · LBJ</span></li>
+        <li><strong>10:10 抵达下拉布安</strong> · 接机自理，前往 Bintang Flores Hotel</li>
+        <li><strong>11:00 入住 Bintang Flores Hotel</strong> <span class="search-name">Jl. Pantai Pede, Labuan Bajo</span> · 海滨酒店，泳池/私人海滩休息</li>
+        <li><strong>16:00 包快艇日落团</strong> <span class="search-name">Kelor Island · Menjerite · Kalong</span> · Kelor 岛轻徒步 + Menjerite 浮潜 + Kalong 蝙蝠日落</li>
+        <li><strong>19:00 返回 Bintang Flores Hotel</strong> · 晚餐安排在 <strong>拉布汉巴焦码头步行街海滨餐饮区</strong> <span class="search-name">Jl. Soekarno Hatta</span> · 以烤龙虾、沙爹、印尼菜和西餐为主；沿街步行比价后入座（人均约 ¥80）</li>
+      </ul>
+      <div class="day-note">日落团含浮潜装备与救生衣；Kalong 蝙蝠出没时间约 18:00–18:30。注意：科莫多接机不含，需自行安排。</div>
+    </div>
+
+    <div class="day-item" id="day9">
+      <div class="day-header">
+        <div class="day-number">09</div>
+        <div class="day-meta">10/4 Sat</div>
+        <h3>科莫多 6 景点包快艇一日游</h3>
+      </div>
+      <div class="day-photos three">
+        <img loading="lazy" decoding="async" src="images/padar2.jpg" alt="帕达尔岛">
+        <img loading="lazy" decoding="async" src="images/pink-beach.jpg" alt="粉红沙滩">
+        <img loading="lazy" decoding="async" src="images/komodo-dragon.jpg" alt="科莫多龙">
+      </div>
+      <ul class="timeline">
+        <li><strong>07:00 出发</strong> <span class="search-name">Labuan Bajo Harbour</span> · 包快艇出海（MAC5 或同级）</li>
+        <li><strong>08:00 帕达尔岛</strong> <span class="search-name">Padar Island</span> · 登顶看三色海湾（约 30min 徒步）</li>
+        <li><strong>10:00 粉红沙滩</strong> <span class="search-name">Pink Beach, Komodo</span> · 粉色珊瑚沙，浮潜拍照</li>
+        <li><strong>11:30 科莫多岛寻龙</strong> <span class="search-name">Komodo Island / Loh Liang</span> · 护林员带领，观察科莫多巨蜥</li>
+        <li><strong>12:30 船上午餐</strong> · 简餐+水果</li>
+        <li><strong>14:00 魔鬼鱼浮潜</strong> <span class="search-name">Manta Point Komodo</span> · 视海况安排</li>
+        <li><strong>15:00 月牙沙洲</strong> <span class="search-name">Taka Makassar Sandbank</span> · 果冻海</li>
+        <li><strong>16:00 卡纳瓦岛</strong> <span class="search-name">Kanawa Island</span> · 近岸浮潜，珊瑚丰富</li>
+        <li><strong>17:00 返回酒店</strong> · 晚餐安排在 <strong>拉布汉巴焦镇中心海鲜大排档区</strong> <span class="search-name">Jl. Soekarno Hatta</span> · 本地人常去的平价海鲜带，适合点辣椒炒蟹、烤鱼和米饭，份量适合多人分享（人均约 ¥60）</li>
+      </ul>
+      <div class="day-note">帕达尔需爬台阶，穿运动鞋；科莫多龙有攻击性，紧跟护林员，保持 5m 以上距离。</div>
+    </div>
+
+    <div class="day-item" id="day10">
+      <div class="day-header">
+        <div class="day-number">10</div>
+        <div class="day-meta">10/5 Sun</div>
+        <h3>科莫多 → 雅加达 → 深圳</h3>
+      </div>
+      <ul class="timeline">
+        <li><strong>上午自由活动</strong> · 补觉、海边咖啡、整理行李</li>
+        <li><strong>12:00 退房</strong> · 镇上午餐 / 海边咖啡</li>
+        <li><strong>14:00 送机</strong> <span class="search-name">Bintang Flores Hotel → Komodo International Airport · LBJ</span> · 车程约 10min</li>
+        <li><strong>15:55–17:20 印尼狮航 QZ861</strong> · 下拉布安 LBJ → 雅加达 CGK <span class="search-name">Soekarno–Hatta International Airport</span></li>
+        <li><strong>17:20 抵达雅加达</strong> · 取行李，寄存大件行李</li>
+        <li><strong>18:00 机场旁商业区晚餐</strong> <span class="search-name">AirportHUB · CGK Terminal 3</span> · T3 航站楼餐饮层选择集中，适合沙爹、炒饭或简餐，预留足够时间回机场安检</li>
+        <li><strong>20:15 返回 CGK T3</strong> · 预留值机、托运、安检与出境时间</li>
+        <li><strong>次日 00:20–07:00 南方航空 CZ8354</strong> <span class="search-name">China Southern · CGK → SZX</span> · 抵达深圳</li>
+        <li>抵达深圳，行程结束</li>
+      </ul>
+      <div class="day-note">科莫多送机不含在地接内，需自理（约 10min 车程）；雅加达只在机场范围内活动；如果国内段延误超过 1 小时，直接留在机场用餐。</div>
+    </div>
+  </div>
+</section>
+
+<section id="vehicles" class="section-light">
+  <div class="container">
+    <div class="eyebrow">VEHICLES</div>
+    <h2 class="section-title serif">地接安排 &amp; 用车</h2>
+    <p class="section-sub">7 人团 · 地接总价 ¥31,150（¥4,450 × 7 人）· D7 自由活动地接不负责</p>
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="meta">Day 1 – Day 3 · 泗水段</div>
+        <h4>泗水舒适 14 座车 · 中文司机</h4>
+        <p>D1 泗水接机 → Bromo 山脚；D2 Bromo 吉普车（含）→ Ijen；D3 Ijen 送外南梦码头</p>
+        <p>丰田海狮 / Hiace · 1 台 · 中文司机</p>
+      </div>
+      <div class="info-card">
+        <div class="meta">Day 3 – Day 6 · 巴厘岛段</div>
+        <h4>巴厘岛舒适 14 座车 · 中文司机</h4>
+        <p>D3 吉利马努克接船 → 罗威纳；D4 罗威纳追海豚（包船含）→ Alas 梯田俱乐部 → 乌布 → 乌布别墅；D5 蓝梦岛潜水（拼船拼车含）；D6 佩妮达西线一日游（含船票/简餐/中文陪同上岛）→ 巴厘岛南部别墅</p>
+        <p>中文司机 · 空调 14 座车 · 含 D4 包船、D5 蓝梦岛拼船拼车、D6 往返船票</p>
+      </div>
+      <div class="info-card">
+        <div class="meta">Day 8 – Day 9 · 科莫多段</div>
+        <h4>科莫多包快艇</h4>
+        <p>D8 日落包船团（Kelor + Menjerite 浮潜 + Kalong 蝙蝠日落）；D9 六景点包快艇一日游（帕达尔/粉红沙滩/科莫多龙/Manta/Taka/Kanawa）</p>
+        <p>包快艇 · 含 2 天科莫多国家公园门票 · 参考 lacoco 船期</p>
+      </div>
+      <div class="info-card">
+        <div class="meta">Day 8 · 送机</div>
+        <h4>巴厘岛送机（含）</h4>
+        <p>乌加桑别墅 → 登巴萨机场 DPS（地接含送机，不含科莫多接机）</p>
+        <p>空调车 · 约 30min 车程</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hotels" class="section-dark">
+  <div class="container">
+    <div class="eyebrow">STAYS</div>
+    <h2 class="section-title">下榻酒店</h2>
+    <div class="cards-grid">
+      <div class="dark-card">
+        <h4>Day 1 · 不住酒店</h4>
+        <p>抵达泗水后直接前往 Bromo 山脚，车内/山脚休整，凌晨直接出发看日出。</p>
+      </div>
+      <div class="dark-card hotel-card">
+        <div class="hotel-media"><div class="hotel-gallery">
+          <img class="hotel-main" loading="lazy" decoding="async" src="images/hotel-bobocabin-1.jpg" alt="Bobocabin Ijen Banyuwangi 山林小屋外观">
+          <img loading="lazy" decoding="async" src="images/hotel-bobocabin-2.jpg" alt="Bobocabin Ijen Banyuwangi 客房内部">
+          <img loading="lazy" decoding="async" src="images/hotel-bobocabin-3.jpg" alt="Bobocabin Ijen Banyuwangi 客房细节">
+        </div></div>
+        <div class="hotel-body">
+          <h4>Day 2 · Bobocabin Ijen Banyuwangi</h4>
+          <p>Ijen 山脚小屋，靠近登山入口，适合蓝火徒步前后休整。</p>
+          <span class="hotel-caption">酒店官方参考图 · 具体房型以预订确认单为准</span>
+        </div>
+      </div>
+      <div class="dark-card hotel-card">
+        <div class="hotel-media"><div class="hotel-gallery">
+          <img class="hotel-main" loading="lazy" decoding="async" src="images/hotel-padmasari-1.jpg" alt="Padmasari Resort Lovina 海边泳池">
+          <img loading="lazy" decoding="async" src="images/hotel-padmasari-2.jpg" alt="Padmasari Resort Lovina 家庭房">
+          <img loading="lazy" decoding="async" src="images/hotel-padmasari-3.jpg" alt="Padmasari Resort Lovina 屋顶景观">
+        </div></div>
+        <div class="hotel-body">
+          <h4>Day 3 · Padmasari Resort Lovina</h4>
+          <p>罗威纳海边度假村，泳池面海，方便第二天清晨出海追海豚。</p>
+          <span class="hotel-caption">酒店官方参考图 · 具体房型以预订确认单为准</span>
+        </div>
+      </div>
+      <div class="dark-card hotel-card">
+        <div class="hotel-media"><div class="hotel-gallery">
+          <img class="hotel-main" loading="lazy" decoding="async" src="images/hotel-ubud-airbnb-1.jpg" alt="乌布 Airbnb AJV 豪华别墅外观与泳池">
+          <img loading="lazy" decoding="async" src="images/hotel-ubud-airbnb-2.jpg" alt="乌布 Airbnb AJV 豪华别墅客厅与餐厅">
+          <img loading="lazy" decoding="async" src="images/hotel-ubud-airbnb-3.jpg" alt="乌布 Airbnb AJV 豪华别墅卧室">
+        </div></div>
+        <div class="hotel-body">
+          <h4>Day 4 · 乌布 Airbnb AJV 豪华别墅</h4>
+          <p>距乌布市中心步行 5 分钟的 4 卧室豪华别墅，整租适合 7 人团入住，含私人泳池和花园。</p>
+          <span class="hotel-caption">Airbnb · Ubud, Bali · 4BR Luxury Villa near City Center</span>
+        </div>
+      </div>
+      <div class="dark-card hotel-card">
+        <div class="hotel-media"><div class="hotel-gallery">
+          <img class="hotel-main" loading="lazy" decoding="async" src="images/hotel-alana-1.jpg" alt="Alana Penida Hotel 海景泳池与草顶别墅">
+          <img loading="lazy" decoding="async" src="images/hotel-alana-2.jpg" alt="Alana Penida Hotel 日落泳池甲板">
+          <img loading="lazy" decoding="async" src="images/hotel-alana-3.jpg" alt="Alana Penida Hotel 大堂">
+        </div></div>
+        <div class="hotel-body">
+          <h4>Day 5 · Alana Penida Hotel</h4>
+          <p>蓝梦岛潜水后衔接佩妮达东海岸，海景泳池酒店，方便第二天跑西线。</p>
+          <span class="hotel-caption">酒店平台参考图 · Jl. Batumulapan, Batununggul</span>
+        </div>
+      </div>
+      <div class="dark-card hotel-card">
+        <div class="hotel-media"><div class="hotel-gallery">
+          <img class="hotel-main" loading="lazy" decoding="async" src="images/hotel-ungasan-airbnb-1.jpg" alt="乌加桑 Airbnb 时尚别墅泳池与花园">
+          <img loading="lazy" decoding="async" src="images/hotel-ungasan-airbnb-2.jpg" alt="乌加桑 Airbnb 时尚别墅客厅空间">
+          <img loading="lazy" decoding="async" src="images/hotel-ungasan-airbnb-3.jpg" alt="乌加桑 Airbnb 时尚别墅卧室与露台">
+        </div></div>
+        <div class="hotel-body">
+          <h4>Day 6 · 乌加桑 Airbnb 时尚别墅</h4>
+          <p>靠近 Savaya Beach Club 的 4 卧室时尚别墅，Ungasan 地区，D6 入住。</p>
+          <span class="hotel-caption">Airbnb · Ungasan / South Kuta, Bali · 4BR Stylish Villa near Savaya Beach Club</span>
+        </div>
+      </div>
+      <div class="dark-card hotel-card">
+        <div class="hotel-media"><div class="hotel-gallery">
+          <img class="hotel-main" loading="lazy" decoding="async" src="images/hotel-kono-1.jpg" alt="Kono Villas 泳池别墅外观">
+          <img loading="lazy" decoding="async" src="images/hotel-kono-2.jpg" alt="Kono Villas 客房空间">
+          <img loading="lazy" decoding="async" src="images/hotel-kono-3.jpg" alt="Kono Villas 庭院与泳池">
+        </div></div>
+        <div class="hotel-body">
+          <h4>Day 7 · Kono Villas &amp; Resort</h4>
+          <p>Ungasan 地区的泳池别墅，D7 自由活动日入住，方便前往乌鲁瓦图、Melasti 与 Savaya Beach Club。</p>
+          <span class="hotel-caption">酒店平台参考图 · Jl. Goa Gong, Ungasan</span>
+        </div>
+      </div>
+      <div class="dark-card hotel-card">
+        <div class="hotel-media"><div class="hotel-gallery">
+          <img class="hotel-main" loading="lazy" decoding="async" src="images/hotel-bintang-1.jpg" alt="Bintang Flores Hotel 阳光泳池与海湾">
+          <img loading="lazy" decoding="async" src="images/hotel-bintang-2.jpg" alt="Bintang Flores Hotel 阳光无边泳池与海景">
+          <img loading="lazy" decoding="async" src="images/hotel-bintang-3.jpg" alt="Bintang Flores Hotel 海湾俯瞰与泳池">
+        </div></div>
+        <div class="hotel-body">
+          <h4>Day 8 – Day 9 · Bintang Flores Hotel</h4>
+          <p>下拉布安 Pantai Pede 海滩的老牌海滨酒店，连住两晚，私人海滩看日落。</p>
+          <span class="hotel-caption">酒店平台参考图 · Jl. Pantai Pede, Labuan Bajo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dining" class="section-light">
+  <div class="container">
+    <div class="eyebrow">DINING</div>
+    <h2 class="section-title serif">餐厅推荐</h2>
+    <p class="dining-intro">以下按行程节点列出值得专程前往的餐厅，供 7 人同行时检索与订位参考。</p>
+    <div class="dining-grid">
+      <h3 class="dining-group">东爪哇 · Bromo / 外南梦</h3>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-01-cafe-lava.jpg" alt="熔岩咖啡馆 Cafe Lava"></div>
+        <div class="dining-body">
+          <h4>熔岩咖啡馆</h4>
+          <span class="tag">Cafe Lava</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-02-betutu.jpg" alt="曼滕佩香料烤鸡 Ayam Betutu Men Tempeh"></div>
+        <div class="dining-body">
+          <h4>曼滕佩香料烤鸡</h4>
+          <span class="tag">Ayam Betutu Men Tempeh</span>
+        </div>
+      </div>
+
+      <h3 class="dining-group">罗威纳 Lovina</h3>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-03-babi-bambu.jpg" alt="竹棚烤乳猪大排档 Warung Bambu Pemaron"></div>
+        <div class="dining-body">
+          <h4>竹棚烤乳猪大排档</h4>
+          <span class="tag">Warung Bambu Pemaron</span>
+        </div>
+      </div>
+
+      <h3 class="dining-group">乌布 Ubud</h3>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-04-bebek.jpg" alt="脏鸭餐厅 Bebek Bengil"></div>
+        <div class="dining-body">
+          <h4>脏鸭餐厅</h4>
+          <span class="tag">Bebek Bengil · Dirty Duck Diner</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-05-ibu-oka.jpg" alt="欧卡烤乳猪 Warung Ibu Oka"></div>
+        <div class="dining-body">
+          <h4>欧卡烤乳猪</h4>
+          <span class="tag">Warung Ibu Oka</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-06-locavore.jpg" alt="本土料理 Locavore"></div>
+        <div class="dining-body">
+          <h4>本土料理 Locavore</h4>
+          <span class="tag">Locavore</span>
+        </div>
+      </div>
+
+      <h3 class="dining-group">佩妮达 Nusa Penida</h3>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-07-pondok.jpg" alt="海滩小厨 Warung Pondok Pantai"></div>
+        <div class="dining-body">
+          <h4>海滩小厨</h4>
+          <span class="tag">Warung Pondok Pantai</span>
+        </div>
+      </div>
+
+      <h3 class="dining-group">巴厘岛南部 · 乌鲁瓦图 / 金巴兰</h3>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-08-el-kabron.jpg" alt="悬崖西班牙餐厅 El Kabron"></div>
+        <div class="dining-body">
+          <h4>悬崖西班牙餐厅</h4>
+          <span class="tag">El Kabron Spanish Restaurant &amp; Lounge</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-09-single-fin.jpg" alt="单鳍冲浪酒吧 Single Fin"></div>
+        <div class="dining-body">
+          <h4>单鳍冲浪酒吧</h4>
+          <span class="tag">Single Fin</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-10-menega.jpg" alt="金巴兰烤海鲜 Menega Cafe"></div>
+        <div class="dining-body">
+          <h4>金巴兰烤海鲜</h4>
+          <span class="tag">Menega Cafe</span>
+        </div>
+      </div>
+
+      <h3 class="dining-group">科莫多 · 拉布安巴焦</h3>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-11-komodo-we.jpg" alt="科莫多韦餐厅 Komodo Wé Restaurant"></div>
+        <div class="dining-body">
+          <h4>科莫多韦餐厅</h4>
+          <span class="tag">Komodo Wé Restaurant</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-12-mediterraneo.jpg" alt="地中海餐厅 Mediterraneo"></div>
+        <div class="dining-body">
+          <h4>地中海餐厅</h4>
+          <span class="tag">Mediterraneo</span>
+        </div>
+      </div>
+
+      <h3 class="dining-group">雅加达 返程</h3>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-13-sate.jpg" alt="士纳雅沙爹 Sate Khas Senayan"></div>
+        <div class="dining-body">
+          <h4>士纳雅沙爹</h4>
+          <span class="tag">Sate Khas Senayan</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="dining-media"><img loading="lazy" decoding="async" src="images/dining-14-solaria.jpg" alt="莎莉雅简餐 Solaria"></div>
+        <div class="dining-body">
+          <h4>莎莉雅简餐</h4>
+          <span class="tag">Solaria</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flight" class="section-dark">
+  <div class="container">
+    <div class="eyebrow">FLIGHTS</div>
+    <h2 class="section-title">五段航班</h2>
+    <p class="section-sub">按订单截图更新 · 合计 ≈¥5,686/人</p>
+    <div class="flight-list">
+      <div class="flight-item">
+        <div class="flight-route">深圳 <span>→</span> 雅加达</div>
+        <div class="flight-detail">
+          <strong>春秋航空 9C7341</strong> · 9/26 14:10–18:20 · 抵达雅加达后转国内段
+        </div>
+        <div class="flight-price">¥1,705</div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-route">雅加达 <span>→</span> 泗水</div>
+        <div class="flight-detail">
+          <strong>连城航空 QG728</strong> · 9/26 21:00–22:40 · 当晚抵达泗水，直接前往 Bromo
+        </div>
+        <div class="flight-price">¥520</div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-route">巴厘岛 <span>→</span> 下拉布安</div>
+        <div class="flight-detail">
+          <strong>印尼狮航 QZ642</strong> · 10/3 09:00–10:10 · 直飞
+        </div>
+        <div class="flight-price">¥476</div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-route">下拉布安 <span>→</span> 雅加达</div>
+        <div class="flight-detail">
+          <strong>印尼狮航 QZ861</strong> · 10/5 15:55–17:20 · 直飞
+        </div>
+        <div class="flight-price">¥867</div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-route">雅加达 <span>→</span> 深圳</div>
+        <div class="flight-detail">
+          <strong>南方航空 CZ8354</strong> · 10/6 00:20–07:00 · 跨日抵达深圳
+        </div>
+        <div class="flight-price">¥2,118</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="budget" class="section-light">
+  <div class="container">
+    <div class="eyebrow">BUDGET</div>
+    <h2 class="section-title serif">费用预算</h2>
+    <p class="section-sub">7 人团 · 地接报价 ¥31,150 + 机票 + 住宿</p>
+    <div class="budget-wrap">
+      <table class="budget-table">
+        <thead><tr><th>项目</th><th>明细</th><th>人均</th></tr></thead>
+        <tbody>
+          <tr><td>机票</td><td>深圳 → 雅加达 · 春秋 9C7341</td><td>¥1,705</td></tr>
+          <tr><td></td><td>雅加达 → 泗水 · 连城 QG728</td><td>¥520</td></tr>
+          <tr><td></td><td>巴厘岛 → 下拉布安 · 狮航 QZ642</td><td>¥476</td></tr>
+          <tr><td></td><td>下拉布安 → 雅加达 · 狮航 QZ861</td><td>¥867</td></tr>
+          <tr><td></td><td>雅加达 → 深圳 · 南航 CZ8354</td><td>¥2,118</td></tr>
+          <tr><td>地接</td><td>7 人团总价 ¥31,150（¥4,450 × 7）· 含泗水+巴厘中文司机车、Bromo/Ijen 吉普向导、追海豚包船、蓝梦岛 DSD 潜水、佩妮达西线含船票简餐、科莫多 2 天包快艇及门票</td><td>¥4,450</td></tr>
+          <tr><td>住宿</td><td>9 晚酒店 / Airbnb · 7 人分摊明细如下</td><td></td></tr>
+          <tr class="sub"><td></td><td>D2 · Bobocabin Ijen（1 晚）</td><td>¥170.02</td></tr>
+          <tr class="sub"><td></td><td>D3 · Padmasari Lovina（1 晚）</td><td>¥213.84</td></tr>
+          <tr class="sub"><td></td><td>D4 · 乌布 AJV 豪华别墅（1 晚）</td><td>¥182.80</td></tr>
+          <tr class="sub"><td></td><td>D5 · Alana Penida Hotel（1 晚）</td><td>¥280.62</td></tr>
+          <tr class="sub"><td></td><td>D6 · 乌加桑 Savaya 别墅（1 晚）</td><td>¥218.97</td></tr>
+          <tr class="sub"><td></td><td>D7 · Kono Villas &amp; Resort（1 晚）</td><td>¥327.24</td></tr>
+          <tr class="sub"><td></td><td>D8–D9 · Bintang Flores Hotel（2 晚）</td><td>¥504.94</td></tr>
+          <tr class="sub"><td></td><td><strong>住宿合计</strong></td><td><strong>¥1,898.41</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="budget-total">
+        <div class="label">预计人均预算（含住宿）</div>
+        <div class="amount">≈ ¥12,034</div>
+        <div class="desc">机票 ¥5,686 + 地接 ¥4,450 + 住宿 ¥1,898.41<br>7 人团 · D7 滑翔伞 ¥300/人（可选，另计）<br>餐费/零花/签证/小费未含<br>地接不含：机票、签证、电话卡、午晚餐、酒店、用车超时费(¥100/h)、Bromo 骑马、小费</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tips" class="section-light">
+  <div class="container">
+    <div class="eyebrow">CHECKLIST & TIPS</div>
+    <h2 class="section-title serif">行前准备</h2>
+    <div class="checklist-wrap">
+      <div class="checklist">
+        <h4>证件 & 行程</h4>
+        <label><input type="checkbox">护照有效期 ≥6 个月 · 打印复印件分开放</label>
+        <label><input type="checkbox">电子签 e-VOA 出发前 3 天在线填 · 截屏保存</label>
+        <label><input type="checkbox">四段机票行程单打印 · 入境海关可能查验</label>
+        <label><input type="checkbox">旅行保险 含境外医疗 + 高风险项目（潜水/火山）</label>
+      </div>
+      <div class="checklist">
+        <h4>衣物 & 鞋</h4>
+        <label><input type="checkbox">冲锋衣+薄羽绒 Bromo / Ijen 凌晨 5–10°C · 必带</label>
+        <label><input type="checkbox">登山鞋/防滑运动鞋 火山 + 帕达尔岛</label>
+        <label><input type="checkbox">泳衣 + 速干衣 潜水/浮潜</label>
+        <label><input type="checkbox">薄外套/防晒衫 2 件 防晒+空调房</label>
+        <label><input type="checkbox">一次性雨披 热带随时下雨</label>
+      </div>
+      <div class="checklist">
+        <h4>药品</h4>
+        <label><input type="checkbox">晕船药 快艇/轮渡 · 提前 30 分钟吃</label>
+        <label><input type="checkbox">止泻药 · 蒙脱石散/黄连素 印尼水质差</label>
+        <label><input type="checkbox">感冒药 · 退烧药 · 创可贴 · 碘伏棉签</label>
+        <label><input type="checkbox">个人常用药 过敏药 / 胃药 / 安眠药</label>
+      </div>
+      <div class="checklist">
+        <h4>电子 & 通讯</h4>
+        <label><input type="checkbox">充电宝 20000mAh 船宿充电有限</label>
+        <label><input type="checkbox">转换插头 印尼欧标双圆孔 C/F 型</label>
+        <label><input type="checkbox">下载 WhatsApp 当地司机/向导联络</label>
+        <label><input type="checkbox">电话卡 / 国际漫游 提前买印尼流量卡</label>
+      </div>
+      <div class="checklist">
+        <h4>防护 & 日用</h4>
+        <label><input type="checkbox">防晒霜 SPF50+ · 墨镜 · 遮阳帽</label>
+        <label><input type="checkbox">湿纸巾 · 免洗洗手液 · 纸巾</label>
+        <label><input type="checkbox">牙刷+牙膏+瓶装水刷牙 防脏水病</label>
+        <label><input type="checkbox">防毒面具 / N95 Ijen 蓝火区域需要</label>
+        <label><input type="checkbox">浮潜面镜/呼吸管 船宿提供但自备更卫生</label>
+      </div>
+      <div class="checklist">
+        <h4>潜水专项</h4>
+        <label><input type="checkbox">DSD 无需潜水证，中文教练 1v2</label>
+        <label><input type="checkbox">近视面镜租赁 ¥100/天 · 一次性咬嘴 ¥30/个</label>
+        <label><input type="checkbox">潜水摄像机 ¥100/天 · 电脑表 ¥75/天</label>
+        <label><input type="checkbox">潜水后 24h 内禁飞 · 行程已避开</label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">印尼纵贯线 2026 · 10 天 9 晚 · 7 人团 · 地接 + Airbnb</div>
+</footer>
+
+<script src="map-data.js"></script>
+<script>
+// NAV scroll effect
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY>50);
+});
+
+// ROUTE SVG MAP
+(function(){
+  var svg=document.getElementById('routeSvg');
+  if(!svg)return;
+  var NS='http://www.w3.org/2000/svg';
+  var W=900,H=500;
+  function el(tag,attrs,text){var e=document.createElementNS(NS,tag);Object.keys(attrs||{}).forEach(function(k){e.setAttribute(k,attrs[k])});if(text)e.textContent=text;return e}
+  function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
+  function appendArrowDefs(){
+    var defs=el('defs');
+    Object.keys(modeColor).forEach(function(mode){
+      var marker=el('marker',{id:'arrow-'+mode,markerWidth:'9',markerHeight:'9',refX:'8',refY:'4.5',orient:'auto',markerUnits:'userSpaceOnUse'});
+      marker.appendChild(el('path',{d:'M 0 0 L 9 4.5 L 0 9 Z',fill:modeColor[mode]}));
+      defs.appendChild(marker);
+    });
+    svg.appendChild(defs);
+  }
+
+  var globalBounds=window.__mapBounds||[95,125,-10,5];
+  var lands=window.__indonesiaLandPaths||[];
+  var globalRoads=window.__globalRoads||[];
+  var focusMaps=window.__focusMaps||{};
+  var focusIslandCoords={
+    d5:[[[115.423,-8.662],[115.441,-8.656],[115.466,-8.659],[115.482,-8.674],[115.487,-8.695],[115.475,-8.708],[115.454,-8.713],[115.433,-8.700],[115.421,-8.682],[115.423,-8.662]],[[115.501,-8.704],[115.514,-8.700],[115.523,-8.710],[115.517,-8.724],[115.504,-8.721],[115.497,-8.710],[115.501,-8.704]]],
+    d6:[]
+  };
+  var modeColor={fly:'#2f6fae',car:'#9a7b45',ferry:'#2b8a84',boat:'#6a5aa8'};
+  var modeName={fly:'航班',car:'包车',ferry:'轮渡',boat:'快艇'};
+  var hotelDays={d2:['hotelIjen'],d3:['hotelLovina'],d4:['hotelUbud'],d5:['hotelPenida'],d6:['hotelDharmawangsa'],d7:['hotelKuta'],d8:['hotelLombok'],d9:['hotelLombok']};
+  var hiddenLabels={d3:{ket:true,gil:true}};
+
+  var points={
+    szx:{lat:22.5431,lon:114.0579,name:'深圳',type:'edge'},
+    kul:{lat:3.139,lon:101.6869,name:'吉隆坡',type:'hub'},
+    sub:{lat:-7.2575,lon:112.7521,name:'泗水',type:'hub'},
+    bro:{lat:-7.9425,lon:112.953,name:'Bromo',type:'major'},
+    ije:{lat:-8.058,lon:114.242,name:'Ijen',type:'major'},
+    ket:{lat:-8.147,lon:114.397,name:'外南梦码头',type:'minor'},
+    gil:{lat:-8.154,lon:114.438,name:'吉利马努克',type:'minor'},
+    lov:{lat:-8.1608,lon:115.027,name:'罗威纳',type:'major'},
+    danu:{lat:-8.275,lon:115.167,name:'水神庙',type:'minor'},
+    bayan:{lat:-8.4066,lon:115.1869,name:'Bayan 古树',type:'featured'},
+    pulina:{lat:-8.4228,lon:115.2765,name:'Bali Pulina',type:'featured'},
+    alas:{lat:-8.4397,lon:115.2813,name:'Alas Harum',type:'featured'},
+    ubu:{lat:-8.5069,lon:115.2625,name:'乌布',type:'major'},
+    san:{lat:-8.690,lon:115.263,name:'沙努尔码头',type:'major'},
+    dps:{lat:-8.748,lon:115.167,name:'巴厘机场',type:'hub'},
+    lem:{lat:-8.680,lon:115.450,name:'蓝梦岛',type:'major'},
+    pen:{lat:-8.730,lon:115.540,name:'佩妮达',type:'major'},
+    keling:{lat:-8.750,lon:115.470,name:'精灵坠崖',type:'minor'},
+    kuta:{lat:-8.720,lon:115.170,name:'库塔',type:'major'},
+    ulu:{lat:-8.829,lon:115.084,name:'乌鲁瓦图',type:'major'},
+    melasti:{lat:-8.848,lon:115.152,name:'Melasti',type:'minor'},
+    lbj:{lat:-8.486,lon:119.887,name:'下拉布安',type:'major'},
+    kel:{lat:-8.320,lon:119.580,name:'Kelor',type:'minor'},
+    men:{lat:-8.380,lon:119.630,name:'Menjerite',type:'minor'},
+    kal:{lat:-8.400,lon:119.750,name:'Kalong',type:'minor'},
+    pad:{lat:-8.650,lon:119.630,name:'帕达尔',type:'major'},
+    pink:{lat:-8.600,lon:119.540,name:'粉红沙滩',type:'minor'},
+    kom:{lat:-8.550,lon:119.490,name:'科莫多岛',type:'major'},
+    man:{lat:-8.700,lon:119.300,name:'Manta',type:'minor'},
+    tak:{lat:-8.780,lon:119.310,name:'Taka',type:'minor'},
+    kan:{lat:-8.500,lon:119.740,name:'Kanawa',type:'minor'},
+    cgk:{lat:-6.1256,lon:106.655,name:'雅加达 CGK',type:'hub'},
+    hub:{lat:-6.130,lon:106.692,name:'AirportHUB',type:'minor'},
+    hotelIjen:{lat:-8.058,lon:114.242,name:'Bobocabin Ijen',type:'hotel'},
+    hotelLovina:{lat:-8.163,lon:115.028,name:'Padmasari Resort Lovina',type:'hotel'},
+    hotelUbud:{lat:-8.498,lon:115.265,name:'AJV Luxury Villa, Ubud',type:'hotel'},
+    hotelPenida:{lat:-8.728,lon:115.505,name:'Alana Penida Hotel',type:'hotel'},
+    hotelDharmawangsa:{lat:-8.825,lon:115.090,name:'Stylish Villa (Savaya)',type:'hotel'},
+    hotelKuta:{lat:-8.809835,lon:115.17709,name:'Kono Villas & Resort',type:'hotel'},
+    hotelLombok:{lat:-8.495,lon:119.879,name:'Bintang Flores Hotel',type:'hotel'}
+  };
+
+  function P(id){var p=points[id];return [p.lat,p.lon]}
+  var routes=[
+    {day:'d1',mode:'fly',stops:['szx','cgk'],path:[P('szx'),P('cgk')],label:'深圳 → 雅加达'},
+    {day:'d1',mode:'fly',stops:['cgk','sub'],path:[P('cgk'),P('sub')],label:'雅加达 → 泗水'},
+    {day:'d2',mode:'car',stops:['sub','bro'],path:[P('sub'),[-7.447,112.718],[-7.645,112.807],[-7.755,113.215],[-7.910,112.940],P('bro')],label:'泗水 → Bromo'},
+    {day:'d2',mode:'car',stops:['bro','ije'],path:[P('bro'),[-7.910,112.940],[-7.755,113.215],[-8.020,113.380],[-7.913,113.821],[-8.220,114.170],P('ije')],label:'Bromo → Ijen'},
+    {day:'d3',mode:'car',stops:['ije','ket'],path:[P('ije'),[-8.220,114.170],[-8.218,114.333],P('ket')],label:'Ijen → 外南梦'},
+    {day:'d3',mode:'ferry',stops:['ket','gil'],path:[P('ket'),P('gil')],label:'Ketapang → Gilimanuk'},
+    {day:'d3',mode:'car',stops:['gil','lov'],path:[P('gil'),[-8.190,114.620],[-8.230,114.820],[-8.210,114.960],P('lov')],label:'吉利马努克 → 罗威纳'},
+    {day:'d4',mode:'car',stops:['lov','bayan'],path:[P('lov'),[-8.250,115.050],[-8.330,115.120],P('bayan')],label:'罗威纳 → Bayan 古树'},
+    {day:'d4',mode:'car',stops:['bayan','pulina'],path:[P('bayan'),[-8.410,115.230],P('pulina')],label:'Bayan 古树 → 咖啡庄园'},
+    {day:'d4',mode:'car',stops:['pulina','alas'],path:[P('pulina'),[-8.430,115.279],P('alas')],label:'咖啡庄园 → Alas Harum'},
+    {day:'d4',mode:'car',stops:['alas','ubu'],path:[P('alas'),[-8.475,115.272],P('ubu')],label:'Alas Harum → 乌布'},
+    {day:'d5',mode:'car',stops:['ubu','san'],path:[P('ubu'),[-8.620,115.260],P('san')],label:'AJV Luxury Villa, Ubud → 沙努尔'},
+    {day:'d5',mode:'boat',stops:['san','lem'],path:[P('san'),[-8.640,115.350],P('lem')],label:'沙努尔 → 蓝梦岛'},
+    {day:'d5',mode:'boat',stops:['lem','pen'],path:[P('lem'),[-8.700,115.490],P('pen')],label:'蓝梦岛 → Alana Penida Hotel'},
+    {day:'d6',mode:'car',stops:['pen','keling'],path:[P('pen'),[-8.700,115.500],P('keling')],label:'Alana Penida Hotel → 精灵坠崖'},
+    {day:'d6',mode:'car',stops:['keling','pen'],path:[P('keling'),[-8.700,115.500],P('pen')],label:'佩妮达西线 → 码头'},
+    {day:'d6',mode:'boat',stops:['pen','san'],path:[P('pen'),[-8.720,115.380],P('san')],label:'佩妮达 → 沙努尔'},
+    {day:'d6',mode:'car',stops:['san','hotelDharmawangsa'],path:[P('san'),[-8.760,115.220],P('hotelDharmawangsa')],label:'沙努尔 → Stylish Villa (Savaya)'},
+    {day:'d7',mode:'car',stops:['hotelKuta','ulu'],path:[P('hotelKuta'),[-8.820,115.140],P('ulu')],label:'Kono Villas → 乌鲁瓦图'},
+    {day:'d7',mode:'car',stops:['ulu','melasti'],path:[P('ulu'),[-8.830,115.120],P('melasti')],label:'乌鲁瓦图 → Melasti'},
+    {day:'d7',mode:'car',stops:['melasti','hotelKuta'],path:[P('melasti'),[-8.830,115.155],P('hotelKuta')],label:'Melasti → Kono Villas'},
+    {day:'d8',mode:'car',stops:['hotelKuta','dps'],path:[P('hotelKuta'),[-8.780,115.180],P('dps')],label:'Kono Villas → 登巴萨机场'},
+    {day:'d8',mode:'fly',stops:['dps','lbj'],path:[P('dps'),P('lbj')],label:'巴厘 → 下拉布安'},
+    {day:'d8',mode:'boat',stops:['lbj','kel','men','kal'],path:[P('lbj'),P('kel'),P('men'),P('kal')],label:'日落团航线'},
+    {day:'d9',mode:'boat',stops:['lbj','pad','pink','kom','man','tak','kan','lbj'],path:[P('lbj'),P('pad'),P('pink'),P('kom'),P('man'),P('tak'),P('kan'),P('lbj')],label:'科莫多 6 景点航线'},
+    {day:'d10',mode:'fly',stops:['lbj','cgk'],path:[P('lbj'),P('cgk')],label:'下拉布安 → 雅加达'},
+    {day:'d10',mode:'car',stops:['cgk','hub'],path:[P('cgk'),[-6.128,106.675],P('hub')],label:'CGK → AirportHUB'},
+    {day:'d10',mode:'car',stops:['hub','cgk'],path:[P('hub'),[-6.128,106.675],P('cgk')],label:'AirportHUB → CGK'}
+  ];
+
+  var globalLabels=[
+    [365,235,'JAVA SEA','water-label'],
+    [540,350,'INDONESIA','coast-label'],
+    [730,405,'FLORES SEA','water-label'],
+    [235,455,'INDIAN OCEAN','water-label']
+  ];
+  var labelOffsets={
+    szx:[-12,18],cgk:[-14,6],sub:[-16,-8],bro:[16,14],ije:[16,-8],ket:[14,18],gil:[-16,-8],
+    lov:[14,-10],danu:[14,-12],bayan:[-18,-12],pulina:[18,-12],alas:[18,14],ubu:[14,14],san:[16,-10],dps:[-16,14],lem:[16,-8],pen:[16,14],
+    keling:[-18,14],kuta:[-18,-10],ulu:[-16,-8],melasti:[16,16],lbj:[16,-10],kel:[-18,-10],men:[14,-14],kal:[16,-10],pad:[16,16],
+    pink:[-18,14],kom:[-18,-10],man:[-20,14],tak:[-20,-10],kan:[18,-10],cgk:[-16,14],hub:[16,-10]
+  };
+  var focusOffsets={
+    d3:{ije:[-18,-18],lov:[18,-14]},
+    d4:{lov:[18,-12],bayan:[-20,-14],pulina:[20,-14],alas:[20,16],ubu:[18,16]},
+    d5:{ubu:[18,14],san:[18,-12],lem:[18,-10],pen:[-18,14]},
+    d6:{pen:[18,-10],keling:[-20,14],san:[18,-12],hotelDharmawangsa:[18,-14]},
+    d7:{hotelKuta:[20,-16],ulu:[-20,-12],melasti:[-18,18]},
+    d8:{men:[-22,-14],kal:[-24,16]},
+    d9:{lbj:[18,-12],kel:[-22,-12],men:[20,-16],kal:[22,-12],pad:[18,20],pink:[-22,20],kom:[-26,-14],man:[-30,16],tak:[28,-16],kan:[22,-12]},
+    d10:{cgk:[-20,18],hub:[18,-12]}
+  };
+  var dayStats={
+    all:['约 4,600 km','10 天 · 5 段航班 + 车船联运'],
+    d1:['约 2,900 km','2 段航班 · 约 7h'],
+    d2:['约 260 km','包车 · 约 7h'],
+    d3:['约 145 km','车 + 轮渡 · 约 5h30m'],
+    d4:['约 105 km','包车 + 3 个顺路停靠 · 约 4h30m'],
+    d5:['约 65 km','车 + 快船 · 约 2h30m'],
+    d6:['约 115 km','岛内包车 + 快船 · 约 5h'],
+    d7:['约 70 km','包车 · 约 3h'],
+    d8:['约 605 km','酒店送机 + 航班 + 日落船'],
+    d9:['约 90 km','快艇环线 · 约 8h'],
+    d10:['约 1,460 km','航班 + 机场接驳 · 约 5h']
+  };
+
+  var viewState={};
+  ['all','d1','d2','d3','d4','d5','d6','d7','d8','d9','d10'].forEach(function(day){viewState[day]={x:0,y:0,zoom:1}});
+  // D3 has only three meaningful steps; enlarge that corridor so the ferry and hotel are readable.
+  viewState.d3={x:-230,y:-90,zoom:1.65};
+  // D7 stays within the Bukit peninsula; zoom in so Kono / Uluwatu / Melasti do not overlap.
+  viewState.d7={x:-187,y:-546,zoom:2.2};
+  var currentDay='all';
+
+  function project(latLon,bounds,focused){
+    var lat=latLon[0],lon=latLon[1],west=bounds[0],east=bounds[1],south=bounds[2],north=bounds[3];
+    if(focused)return [40+(lon-west)/(east-west)*820,40+(north-lat)/(north-south)*420];
+    return [(lon-west)/(east-west)*W,(north-lat)/(north-south)*H];
+  }
+  function inBounds(latLon,bounds,margin){
+    margin=margin||0.2;
+    return latLon[1]>=bounds[0]-margin&&latLon[1]<=bounds[1]+margin&&latLon[0]>=bounds[2]-margin&&latLon[0]<=bounds[3]+margin;
+  }
+  function polylinePath(route,proj){
+    var pts=route.path.map(function(p){return proj(p)});
+    return 'M '+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1)}).join(' L ');
+  }
+  function curvedPath(route,proj){
+    var pts=route.stops.map(function(id){return proj(P(id))});
+    if(pts.length<2)return '';
+    var d='M '+pts[0][0].toFixed(1)+' '+pts[0][1].toFixed(1);
+    for(var i=1;i<pts.length;i++){
+      var a=pts[i-1],b=pts[i],dx=b[0]-a[0],dy=b[1]-a[1],len=Math.max(1,Math.sqrt(dx*dx+dy*dy));
+      var bend=Math.min(28,Math.max(12,len*.12));
+      var nx=-dy/len,ny=dx/len;
+      var cx=(a[0]+b[0])/2+nx*bend,cy=(a[1]+b[1])/2+ny*bend;
+      d+=' Q '+cx.toFixed(1)+' '+cy.toFixed(1)+' '+b[0].toFixed(1)+' '+b[1].toFixed(1);
+    }
+    return d;
+  }
+  function flightPath(route,proj){
+    var a=proj(route.path[0]),b=proj(route.path[route.path.length-1]);
+    var dx=b[0]-a[0],dy=b[1]-a[1],mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
+    var len=Math.max(1,Math.sqrt(dx*dx+dy*dy));
+    var bend=clamp(len*0.22,50,130);
+    var nx=dy/len,ny=-dx/len;
+    var cx=mx+nx*bend,cy=my+ny*bend;
+    return 'M '+a[0].toFixed(1)+' '+a[1].toFixed(1)+' Q '+cx.toFixed(1)+' '+cy.toFixed(1)+' '+b[0].toFixed(1)+' '+b[1].toFixed(1);
+  }
+  function routePath(route,proj){return route.mode==='fly'?flightPath(route,proj):curvedPath(route,proj)}
+  function routeMidpoint(route,proj){
+    var pts=route.stops.map(function(id){return proj(P(id))});
+    var mid=pts[Math.floor(pts.length/2)]||[0,0];
+    return [mid[0],mid[1]-10];
+  }
+  function routeTouches(route,bounds){return route.stops.some(function(id){return inBounds(P(id),bounds,0.35)})}
+
+  function drawMap(day){
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    appendArrowDefs();
+    svg.appendChild(el('rect',{class:'map-bg',width:W,height:H}));
+    var view=viewState[day]||viewState.all;
+    var s=view.zoom;
+    var focus=focusMaps[day];
+    var bounds=focus?focus.bounds:globalBounds;
+    var proj=function(p){return project(p,bounds,!!focus)};
+    var g=el('g',{id:'mapCanvas',transform:'translate('+view.x+' '+view.y+') scale('+s+')'});
+
+    (focus?focus.lands:lands).forEach(function(l){g.appendChild(el('path',{class:day==='all'?'land':'land land-dim',d:l.d,style:'stroke-width:'+(1.05/s)}))});
+    (focusIslandCoords[day]||[]).forEach(function(ring){
+      var islandPath='M '+ring.map(function(p){var q=proj([p[1],p[0]]);return q[0].toFixed(1)+' '+q[1].toFixed(1)}).join(' L ')+' Z';
+      g.appendChild(el('path',{class:'land land-dim',d:islandPath,style:'stroke-width:'+(1.05/s)}));
+    });
+    // Keep the base map quiet: the route itself carries the itinerary information.
+    // Detailed road geometry is intentionally hidden to preserve readability.
+
+    (focus?focus.labels:globalLabels).forEach(function(label){
+      g.appendChild(el('text',{class:label[3],x:label[0],y:label[1],style:'font-size:'+(label[3]==='coast-label'?12/s:10/s)+'px'},label[2]));
+    });
+
+    var visibleRoutes=routes.filter(function(route){
+      if(day==='all')return route.day!=='d1'&&(route.day!=='d10'||route.mode==='fly');
+      return route.day===day&&(!focus||routeTouches(route,bounds));
+    });
+    visibleRoutes.forEach(function(route,routeIndex){
+      var d=routePath(route,proj);
+      g.appendChild(el('path',{class:'route-casing',d:d,style:'stroke-width:'+(7/s)}));
+      g.appendChild(el('path',{class:'path '+route.mode,d:d,'marker-end':'url(#arrow-'+route.mode+')',style:'stroke:'+modeColor[route.mode]+';stroke-width:'+((route.mode==='fly'?2.2:1.8)/s)+';animation-delay:-'+(routeIndex*.22).toFixed(2)+'s'}));
+    });
+
+    var stopOrder=[];
+    visibleRoutes.forEach(function(route){route.stops.forEach(function(id){if(stopOrder.indexOf(id)<0)stopOrder.push(id)})});
+    var shown=day==='all'?['szx','cgk','sub','dps','lbj']:stopOrder.filter(function(id){return !focus||inBounds(P(id),bounds,0.3)});
+    var dayOffsets=focusOffsets[day]||{};
+    shown.forEach(function(id,index){
+      var p=points[id];if(!p)return;
+      var xy=project([p.lat,p.lon],bounds,!!focus);
+      var isKey=p.type==='major'||p.type==='hub'||p.type==='edge';
+      var isFeatured=p.type==='featured';
+      if(day==='all'){
+        g.appendChild(el('circle',{class:'point '+(isFeatured?'featured':'major'),cx:xy[0],cy:xy[1],r:(isKey?5.5:4.2)/s,style:'r:'+((isKey?5.5:4.2)/s)+'px'}));
+      }else{
+        g.appendChild(el('circle',{class:'stop-dot'+(isFeatured?' featured':''),cx:xy[0],cy:xy[1],r:(isKey?4.6:(isFeatured?4.5:3.5))/s,style:'r:'+((isKey?4.6:(isFeatured?4.5:3.5))/s)+'px'}));
+      }
+      var off=dayOffsets[id]||labelOffsets[id]||[14,6];
+      var labelClass='label '+(day==='all'?'major':'active')+(isFeatured?' featured':'');
+      if(p.type!=='hotel'&&!(hiddenLabels[day]&&hiddenLabels[day][id])){
+        g.appendChild(el('text',{class:labelClass,x:xy[0]+off[0]/s,y:xy[1]+off[1]/s,'text-anchor':off[0]>0?'start':'end',style:'font-size:'+((isKey?12:10.5)/s)+'px'},p.name));
+      }
+    });
+
+    if(day==='d3'){
+      var ketXY=project(P('ket'),bounds,!!focus),gilXY=project(P('gil'),bounds,!!focus);
+      var ferryX=(ketXY[0]+gilXY[0])/2,ferryY=(ketXY[1]+gilXY[1])/2;
+      g.appendChild(el('circle',{class:'stop-dot featured',cx:ferryX,cy:ferryY,r:4/s,style:'r:'+(4/s)+'px'}));
+      g.appendChild(el('text',{class:'label featured',x:ferryX+12/s,y:ferryY+22/s,'text-anchor':'start',style:'font-size:'+(10/s)+'px'},'Ketapang ↔ Gilimanuk'));
+    }
+
+    var visibleHotels=day==='all'?Object.keys(hotelDays).reduce(function(all,key){return all.concat(hotelDays[key])},[]):(hotelDays[day]||[]);
+    visibleHotels.filter(function(id,index,arr){return arr.indexOf(id)===index&&inBounds(P(id),bounds,0.35)}).forEach(function(id){
+      var p=points[id];if(!p)return;
+      var xy=project([p.lat,p.lon],bounds,!!focus);
+      g.appendChild(el('circle',{class:'hotel-marker',cx:xy[0],cy:xy[1],r:4.6/s,style:'r:'+(4.6/s)+'px'}));
+      if(day!=='all'){
+        var hotelOff=xy[0]>720?[-14,-12]:[14,-12];
+        g.appendChild(el('text',{class:'hotel-label',x:xy[0]+hotelOff[0]/s,y:xy[1]+hotelOff[1]/s,'text-anchor':hotelOff[0]>0?'start':'end',style:'font-size:'+(10/s)+'px'},p.name));
+      }
+    });
+
+    svg.appendChild(g);
+
+    var titles={all:'印尼 10 天纵贯线',d1:'D1 深圳 → 雅加达 → 泗水',d2:'D2 泗水 → Bromo → Ijen',d3:'D3 Ijen → 罗威纳',d4:'D4 罗威纳 → 古树 → 咖啡庄园 → 乌布',d5:'D5 乌布 → 蓝梦岛 → Alana Penida Hotel',d6:'D6 佩妮达西线 → Stylish Villa (Savaya)',d7:'D7 Ungasan → 乌鲁瓦图 → Melasti',d8:'D8 巴厘 → Bintang Flores → 科莫多日落团',d9:'D9 科莫多 6 景点快艇',d10:'D10 科莫多 → 雅加达机场晚餐'};
+    svg.appendChild(el('text',{class:'map-title',x:24,y:32},titles[day]||titles.all));
+    svg.appendChild(el('path',{class:'title-rule',d:'M 24 42 H 68'}));
+    svg.appendChild(el('text',{class:'map-sub',x:24,y:58},focus?'当日路线':'印尼行程总览'));
+
+    // 交通方式图例已移除，地图保持简洁。
+    svg.appendChild(el('circle',{class:'hotel-marker',cx:30,cy:478,r:4.6}));
+    svg.appendChild(el('text',{class:'map-sub',x:44,y:481},'酒店位置 · 金色点'));
+  }
+
+  function drawCurrentDay(day){currentDay=day;drawMap(day)}
+  window.__drawRouteMap=drawCurrentDay;
+  drawCurrentDay('all');
+})();
+
+// ROUTE SUMMARY SWITCH
+(function(){
+  var summaries={
+    all:{
+      title:'全程路线',
+      desc:'深圳 → 雅加达 → 泗水 → Bromo → Ijen → 轮渡至巴厘 → 罗威纳 → 乌布 → 蓝梦岛 → 佩妮达 → 乌鲁瓦图 → 科莫多 → 回国。',
+      days:[['9/26','深圳→雅加达→泗水（不住酒店）'],['9/27','Bromo 日出→Bobocabin Ijen'],['9/28','Ijen 蓝火→Padmasari Lovina'],['9/29','追海豚→古树→咖啡庄园→乌布'],['9/30','蓝梦岛 DSD→Alana Penida Hotel'],['10/1','佩妮达西线→Stylish Villa (Savaya)'],['10/2','乌鲁瓦图→Melasti→Kono Villas'],['10/3','巴厘→Bintang Flores→日落团'],['10/4','科莫多 6 景点'],['10/5','科莫多→雅加达→深圳']]
+    },
+    d1:{title:'D1 · 深圳 → 雅加达 → 泗水',desc:'春秋 9C7341 + 连城 QG728 抵达泗水，随后直奔 Bromo 山脚，当晚不住酒店。',days:[['14:10','深圳 SZX → 雅加达 CGK · 9C7341'],['21:00','雅加达 CGK → 泗水 SUB · QG728'],['22:40','Juanda International Airport · 接机前往 Bromo'],['凌晨','Cemoro Lawang · 山脚休整']]},
+    d2:{title:'D2 · 泗水 → Bromo → Ijen',desc:'凌晨出发 Bromo，看日出、穿沙海、登火山口，随后前往 Ijen 并入住 Bobocabin Ijen Banyuwangi。',days:[['03:00','出发 Bromo'],['04:30','King Kong 观景台日出'],['08:30','山脚早餐/整理'],['10:00','前往 Ijen'],['傍晚','入住 Bobocabin']]},
+    d3:{title:'D3 · Ijen → 罗威纳',desc:'凌晨从 Ijen 出发，经 Ketapang / Gilimanuk 轮渡跨越巴厘海峡，抵达北巴厘罗威纳，入住 Padmasari Resort Lovina。',days:[['01:00','Ijen Crater · 登山'],['04:00','蓝火 / 硫酸湖'],['10:00','Ketapang Ferry Port · 外南梦码头'],['轮渡','Ketapang → Gilimanuk · 巴厘海峡'],['16:00','Padmasari Resort Lovina · 入住']]},
+    d4:{title:'D4 · 罗威纳 → 古树 → 咖啡庄园 → 乌布',desc:'清晨出海追海豚，午后顺路停靠 Bayan 古树（Kayu Putih）、Bali Pulina 咖啡庄园和 Alas Harum，再进入乌布入住 AJV Luxury Villa, Ubud。',days:[['05:30','Lovina Beach Dolphin Watching'],['09:30','前往 Ubud'],['10:30','Bayan Ancient Tree / Kayu Putih'],['12:00','Bali Pulina Agro Tourism'],['14:00','Alas Harum Bali'],['16:30','Ubud Palace / Ubud Art Market'],['18:00','AJV Luxury Villa, Ubud 入住']]},
+    d5:{title:'D5 · 蓝梦岛潜水 → Alana Penida Hotel',desc:'中文教练 DSD 两潜，晚上衔接佩妮达岛，入住 Alana Penida Hotel。',days:[['08:00','AJV Luxury Villa, Ubud 出发'],['09:30','快船蓝梦岛'],['10:30','泳池教学'],['13:00','第一潜·Manta'],['15:00','第二潜·Crystal Bay'],['18:00','Alana Penida 入住']]},
+    d6:{title:'D6 · 佩妮达西线 → Stylish Villa (Savaya)',desc:'从 Alana Penida Hotel 出发跑西线，下午返回巴厘本岛，入住 Ungasan 的 Stylish Villa (Savaya)。',days:[['07:30','Alana Penida Hotel 出发'],['09:00','精灵坠崖'],['11:30','天仙裂痕'],['13:30','天神浴池'],['15:30','返程快船'],['17:30','Stylish Villa (Savaya) 入住']]},
+    d7:{title:'D7 · 乌鲁瓦图',desc:'从 Kono Villas & Resort 出发，游览情人崖、悬崖公路与 Melasti 沙滩日落，滑翔伞项目已包含。',days:[['09:30','Kono Villas 出发'],['10:00','情人崖'],['12:00','Malini 午餐'],['14:00','滑翔伞（已含）'],['15:30','悬崖公路'],['17:00','Melasti 日落'],['18:30','返回 Kono Villas']]},
+    d8:{title:'D8 · 巴厘 → 下拉布安',desc:'从 Kono Villas & Resort 07:00 送机，乘 QZ642（09:00–10:10）飞往 Komodo International Airport（LBJ），入住 Bintang Flores Hotel。',days:[['07:00','Ngurah Rai Airport · DPS 送机'],['09:00','QZ642 · DPS → LBJ'],['10:10','Komodo International Airport · LBJ 抵达'],['11:00','Bintang Flores Hotel 入住'],['16:00','Kelor · Menjerite · Kalong 日落团']]},
+    d9:{title:'D9 · 科莫多 6 景点',desc:'帕达尔、粉红沙滩、科莫多寻龙、Manta、Taka、Kanawa。',days:[['07:00','出海'],['08:00','帕达尔'],['10:00','粉红沙滩'],['11:30','科莫多寻龙'],['14:00','Manta'],['15:00','Taka'],['16:00','Kanawa']]},
+    d10:{title:'D10 · 科莫多 → 雅加达 → 深圳',desc:'12:00 退房、午餐后 14:00 送机，乘 QZ861（15:55–17:20）到 CGK，随后次日 00:20 乘 CZ8354 返回深圳。',days:[['12:00','退房 / 镇上午餐'],['14:00','Komodo Airport · LBJ 送机'],['15:55','QZ861 · LBJ → CGK'],['17:20','Soekarno–Hatta International Airport · CGK 抵达'],['18:00','AirportHUB · CGK T3 附近晚餐'],['次日 00:20','CZ8354 · CGK → SZX']]}
+  };
+
+  var tabs=document.querySelectorAll('.route-tabs .tab');
+  var summaryEl=document.getElementById('routeSummary');
+
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      tabs.forEach(function(t){t.classList.remove('active')});
+      tab.classList.add('active');
+      var day=tab.dataset.day;
+      if(window.__drawRouteMap) window.__drawRouteMap(day);
+      if(window.__updateActualMap) window.__updateActualMap(day);
+      var s=summaries[day]||summaries.all;
+      var html='<h3>'+s.title+'</h3><p>'+s.desc+'</p><p class="hotel-map-note">“住”标记对应每晚酒店位置；重点地点保留可直接搜索的英文名。</p><div class="route-days">';
+      s.days.forEach(function(d){html+='<div><strong>'+d[0]+'</strong>'+d[1]+'</div>'});
+      html+='</div>';
+      summaryEl.innerHTML=html;
+    });
+  });
+})();
+
+// ACTUAL MAP VERSION (Tencent Maps GL JS; overseas map requires a user-provided key)
+(function(){
+  var buttons=document.querySelectorAll('[data-map-view]');
+  var svg=document.getElementById('routeSvg');
+  var actual=document.getElementById('actualMap');
+  var status=document.getElementById('actualMapStatus');
+  var map=null, markers=null, lines=null, currentDay='all', loading=false;
+  var actualPts={
+    szx:[22.5431,114.0579,'深圳'],kul:[3.139,101.6869,'吉隆坡'],sub:[-7.2575,112.7521,'泗水'],bro:[-7.9425,112.953,'Bromo'],ije:[-8.058,114.242,'Ijen'],ket:[-8.15,114.43,'外南梦'],gil:[-8.16,114.42,'吉利马努克'],lov:[-8.16,115.03,'罗威纳'],danu:[-8.27,115.17,'水神庙'],bayan:[-8.4066,115.1869,'Bayan 古树'],pulina:[-8.4228,115.2765,'Bali Pulina'],alas:[-8.4397,115.2813,'Alas Harum'],ubu:[-8.51,115.26,'乌布'],san:[-8.69,115.26,'沙努尔'],lem:[-8.68,115.44,'蓝梦岛'],pen:[-8.73,115.54,'佩妮达'],keling:[-8.75,115.47,'精灵坠崖'],kuta:[-8.72,115.17,'库塔'],hotelDharmawangsa:[-8.825,115.090,'Stylish Villa (Savaya)'],hotelKuta:[-8.8098,115.1771,'Kono Villas'],hotelLombok:[-8.495,119.879,'Bintang Flores Hotel'],dps:[-8.74,115.17,'登巴萨'],ulu:[-8.83,115.10,'乌鲁瓦图'],melasti:[-8.85,115.13,'Melasti'],lbj:[-8.49,119.89,'下拉布安'],kel:[-8.43,119.56,'Kelor'],men:[-8.45,119.60,'Menjerite'],kal:[-8.45,119.77,'Kalong'],pad:[-8.66,119.64,'帕达尔'],pink:[-8.69,119.53,'粉红沙滩'],kom:[-8.54,119.49,'科莫多'],man:[-8.57,119.32,'Manta'],tak:[-8.64,119.30,'Taka'],kan:[-8.41,119.72,'Kanawa'],jkt:[-6.2088,106.8456,'雅加达']
+  };
+  var segs=[['szx','kul','fly'],['kul','sub','fly'],['sub','bro','car'],['bro','ije','car'],['ije','ket','car'],['ket','gil','ferry'],['gil','lov','car'],['lov','bayan','car'],['bayan','pulina','car'],['pulina','alas','car'],['alas','ubu','car'],['ubu','san','car'],['san','lem','boat'],['lem','pen','boat'],['pen','keling','car'],['keling','pen','car'],['pen','san','boat'],['san','hotelDharmawangsa','car'],['hotelKuta','ulu','car'],['ulu','melasti','car'],['melasti','hotelKuta','car'],['hotelKuta','dps','car'],['dps','lbj','fly'],['lbj','kel','boat'],['kel','men','boat'],['men','kal','boat'],['kal','pad','boat'],['pad','pink','boat'],['pink','kom','boat'],['kom','man','boat'],['man','tak','boat'],['tak','kan','boat'],['kan','lbj','boat'],['lbj','jkt','fly']];
+  var daySegs={all:segs.map(function(s){return s[0]+'-'+s[1]}),d1:['szx-kul','kul-sub'],d2:['sub-bro','bro-ije'],d3:['ije-ket','ket-gil','gil-lov'],d4:['lov-bayan','bayan-pulina','pulina-alas','alas-ubu'],d5:['ubu-san','san-lem','lem-pen'],d6:['pen-keling','keling-pen','pen-san','san-hotelDharmawangsa'],d7:['hotelKuta-ulu','ulu-melasti','melasti-hotelKuta'],d8:['hotelKuta-dps','dps-lbj','lbj-kel','kel-men','men-kal'],d9:['lbj-pad','pad-pink','pink-kom','kom-man','man-tak','tak-kan','kan-lbj'],d10:['lbj-jkt']};
+  function showStatus(text){if(status){status.hidden=false;status.innerHTML='<strong>实际地图版本</strong>'+text}}
+  function initMap(){
+    if(!window.TMap){showKeyNotice('SDK');return}
+    map=new TMap.Map('actualMap',{center:new TMap.LatLng(-8.42,115.3),zoom:6.2,viewMode:'2D',minZoom:5,maxZoom:12});
+    status.hidden=true;
+    update(currentDay);
+  }
+  function showKeyNotice(reason){
+    showStatus('腾讯地图需要配置腾讯位置服务 Key 后才能加载海外底图。当前未配置 Key，因此不渲染半成品地图。<code>在 index.html 搜索“Tencent Open Platform”，把占位文本替换成你的 Key，然后刷新页面。</code><span class="status-note">真实比例路线图仍可正常使用；切回左侧即可查看当日路线。</span>');
+  }
+  function loadMap(){
+    if(loading||map)return;
+    loading=true;
+    showStatus('正在加载实际地图…');
+    var key='Please apply for your own key at the Tencent Open Platform and replace this placeholder';
+    if(key.indexOf('Please apply')===0){showKeyNotice('placeholder');loading=false;return}
+    var script=document.createElement('script');
+    script.src='https://map.qq.com/api/gljs?v=1.exp&key='+encodeURIComponent(key);
+    script.onload=initMap;
+    script.onerror=function(){showKeyNotice('load')};
+    document.head.appendChild(script);
+    setTimeout(function(){if(!map)showKeyNotice('timeout')},4500);
+  }
+  function update(day){
+    currentDay=day||'all';
+    if(!map||!window.TMap)return;
+    var active=(daySegs[currentDay]||daySegs.all);
+    var activeSet={};active.forEach(function(id){activeSet[id]=true});
+    var markerGeometries=Object.keys(actualPts).map(function(id){var p=actualPts[id];var isActive=currentDay==='all'||active.some(function(k){return k.indexOf(id+'-')===0||k.indexOf('-'+id)>=0});return{id:id,position:new TMap.LatLng(p[0],p[1]),styleId:isActive?'active':'muted',properties:{title:p[2]}}});
+    var activeIcon='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="7" fill="#1f73d2" stroke="#fff" stroke-width="3"/></svg>');
+    var mutedIcon='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><circle cx="8" cy="8" r="5" fill="#9aa6ad" stroke="#fff" stroke-width="2"/></svg>');
+    var styles={active:new TMap.MarkerStyle({src:activeIcon,width:20,height:20,anchor:{x:10,y:10}}),muted:new TMap.MarkerStyle({src:mutedIcon,width:16,height:16,anchor:{x:8,y:8}})};
+    if(markers)markers.setGeometries(markerGeometries);else markers=new TMap.MultiMarker({map:map,styles:styles,geometries:markerGeometries});
+    var lineColors={fly:'#1f73d2',car:'#a58e62',ferry:'#178a88',boat:'#6b58bd'};
+    var lineGeometries=segs.map(function(seg){var a=actualPts[seg[0]],b=actualPts[seg[1]];var activeLine=activeSet[seg[0]+'-'+seg[1]];return{id:seg[0]+'-'+seg[1],styleId:activeLine?seg[2]:'muted',paths:[new TMap.LatLng(a[0],a[1]),new TMap.LatLng(b[0],b[1])]}});
+    var lineStyles={fly:new TMap.PolylineStyle({color:lineColors.fly,width:4,borderWidth:0}),car:new TMap.PolylineStyle({color:lineColors.car,width:3,borderWidth:0,dashStyle:[4,5]}),ferry:new TMap.PolylineStyle({color:lineColors.ferry,width:4,borderWidth:0,dashStyle:[6,5]}),boat:new TMap.PolylineStyle({color:lineColors.boat,width:3,borderWidth:0,dashStyle:[3,4]}),muted:new TMap.PolylineStyle({color:'#b8c2c8',width:2,borderWidth:0})};
+    if(lines)lines.setGeometries(lineGeometries);else lines=new TMap.MultiPolyline({map:map,styles:lineStyles,geometries:lineGeometries});
+  }
+  buttons.forEach(function(btn){btn.addEventListener('click',function(){
+    buttons.forEach(function(b){b.classList.remove('active');b.setAttribute('aria-selected','false')});
+    btn.classList.add('active');btn.setAttribute('aria-selected','true');
+    var isActual=btn.dataset.mapView==='actual';
+    svg.classList.toggle('map-hidden',isActual); actual.classList.toggle('active',isActual);
+    if(status)status.hidden=!isActual || !!map;
+    if(isActual)loadMap();
+  })});
+  window.__updateActualMap=update;
+})();
+
+// HERO SLIDESHOW
+(function(){
+  var slides=document.querySelectorAll('.hero-slide');
+  var dots=document.querySelectorAll('.hero-dots button');
+  if(!slides.length)return;
+  var idx=0,interval;
+  function loadSlide(slide){
+    if(slide&&slide.dataset.bg&&!slide.dataset.loaded){
+      slide.style.backgroundImage="url('"+slide.dataset.bg+"')";
+      slide.dataset.loaded='1';
+    }
+  }
+  loadSlide(slides[0]);
+  function show(i){
+    idx=i;
+    loadSlide(slides[idx]);
+    slides.forEach(function(s){s.classList.toggle('active',parseInt(s.dataset.idx)===idx)});
+    dots.forEach(function(d){d.classList.toggle('active',parseInt(d.dataset.idx)===idx)});
+  }
+  function next(){show((idx+1)%slides.length)}
+  function start(){interval=setInterval(next,5500)}
+  function stop(){clearInterval(interval)}
+  dots.forEach(function(d){d.addEventListener('click',function(){show(parseInt(d.dataset.idx));stop();start()})});
+  document.querySelector('.hero').addEventListener('mouseenter',stop);
+  document.querySelector('.hero').addEventListener('mouseleave',start);
+  start();
+})();
+
+// checklist persistence
+var saved=JSON.parse(localStorage.getItem('indonesia-trip-checklist')||'{}');
+document.querySelectorAll('.checklist input[type=checkbox]').forEach(function(cb,idx){
+  if(saved[idx]){cb.checked=true;cb.parentElement.classList.add('done')}
+  cb.addEventListener('change',function(){
+    saved[idx]=cb.checked;
+    localStorage.setItem('indonesia-trip-checklist',JSON.stringify(saved));
+    cb.parentElement.classList.toggle('done',cb.checked);
+  });
+});
+</script>
+
+</body>
+</html>
